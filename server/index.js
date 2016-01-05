@@ -2,21 +2,30 @@
 
 var config = require('./config.js');
 var express = require('express');
-var expressJwt = require('express-jwt');
-var bodyparser = require('body-parser');
+// var expressJwt = require('express-jwt');
+var session = require('express-session');
+
 var debug = require('debug')('svs');
 
 var app = express();
 
 app.use(require('connect-livereload')());
 
-app.use(bodyparser.json());
+app.use(require('body-parser').json());
+app.use(session({
+  secret: 'correct horse battery staple',
+  resave: false,
+  saveUninitialized: true
+}))
 
-app.use('/api/admin', expressJwt({
-  secret: config.get('TOKEN_SECRET')
-}));
+app.use(require('./set-respondent.js'))
+
+// app.use('/api/admin', expressJwt({
+//   secret: config.get('TOKEN_SECRET')
+// }));
 
 require('./routes/questions.js')(app);
+require('./routes/answers.js')(app);
 
 app.use(express.static('public'));
 

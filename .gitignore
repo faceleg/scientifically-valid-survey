@@ -8,4 +8,5 @@ node_modules/
 npm-debug.log
 public/bower-components/
 public/build/
+public/app/templates.js
 

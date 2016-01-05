@@ -1,7 +1,9 @@
 <h1>Scientifically Valid Survey</h1>
 
 <p>
-    Please help science by answering the following psuedorandomly selected question
+    <em>
+        Please help science by answering the following psuedorandomly selected question
+    </em>
 </p>
 
 <hr/>
@@ -10,13 +12,18 @@
     {{ home.question.text }}
 </p>
 
-<hr/>
-
-<form name="answerForm" ng-submit="answerForm.$valid && home.save()">
+<form name="answerForm" ng-submit="answerForm.$valid && home.saveAnswer()">
     <div class="home__answer">
-        <label for="answer">Your answer</label>
-        <textarea id=answer" ng-model="home.answer.text" placeholder="For science!"></textarea>
+        <div ng-repeat="choice in home.question.choices">
+            <label for="choice.id">{{ choice.text }}</label>
+            <input id="{{ choice.id }}"type="radio" ng-model="home.answer.choice">
+        </div>
+        <p ng-if="home.success" class="home__answer__saved">{{ home.success }}</p>
+        <p ng-if="home.error" class="home__answer__error">{{ home.error }}</p>
+
         <button>Submit</button>
     </div>
 </form>
+
+<hr/>
 

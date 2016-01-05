@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "This is a completely valid survey tool",
   "main": "index.js",
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
     "pretest": "npm install && node_modules/.bin/bower install",
     "lintspaces": "node_modules/.bin/gulp lintspaces",
@@ -24,12 +27,17 @@
   },
   "dependencies": {
     "autoprefixer": "^6.2.3",
+    "bluebird": "^3.1.1",
+    "body-parser": "^1.14.2",
     "browser-sync": "^2.11.0",
     "connect-livereload": "^0.5.4",
     "convict": "^1.0.2",
+    "cookie-parser": "^1.4.0",
+    "debug": "^2.2.0",
     "del": "^2.2.0",
     "express": "^4.13.3",
     "express-jwt": "^3.3.0",
+    "express-session": "^1.12.1",
     "gulp": "^3.9.0",
     "gulp-angular-templatecache": "^1.8.0",
     "gulp-express": "^0.3.5",
@@ -40,13 +48,18 @@
     "gulp-postcss": "^6.0.1",
     "gulp-rename": "^1.2.2",
     "lost": "^6.6.3",
+    "mysql": "^2.10.0",
+    "mysql2": "^0.15.8",
     "postcss": "^5.0.14",
+    "postcss-color-function": "^2.0.0",
+    "postcss-extend": "^1.0.1",
     "postcss-import": "^7.1.3",
     "postcss-nested": "^1.0.0",
     "postcss-responsive-type": "^0.3.2",
     "postcss-simple-vars": "^1.2.0",
     "ramda": "^0.19.1",
     "run-sequence": "^1.1.5",
-    "sequelize": "^3.15.1"
+    "sequelize": "^3.15.1",
+    "yargs": "^3.31.0"
   }
 }

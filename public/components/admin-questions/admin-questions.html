@@ -1,0 +1,10 @@
+<h1>Questions</h1>
+
+<table ng-table="questions.tableParams" class="table">
+    <tr ng-repeat="row in $data">
+        <td class="table__container__question" data-title="'Question'" sortable="'text'">
+        <td>
+            <p>{{ ::row.text }}</p>
+        </td>
+    </tr>
+</table>

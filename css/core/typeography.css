@@ -4,8 +4,8 @@ textarea,
 button {
   font-family: 'Cabin', Helvetica, Arial, sans-serif;
   font-size: responsive;
-  min-font-size: 12px;
-  max-font-size: 21px;
+  min-font-size: 23px;
+  max-font-size: 23px;
   lower-font-range: 420px;
   upper-font-range: 1280px;
 }
@@ -13,7 +13,7 @@ button {
 h1 {
   font-family: 'Lobster', Georgia, Times, serif;
   font-size: responsive;
-  min-font-size: 20px;
+  min-font-size: 40px;
   max-font-size: 98px;
   lower-font-range: 420px;
   upper-font-range: 1280px;
@@ -37,4 +37,9 @@ small {
 
 em {
   font-style: italic;
+}
+
+a {
+  color: $colour-highlight;
+  cursor: pointer;
 }

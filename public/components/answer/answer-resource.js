@@ -5,8 +5,8 @@
   .factory('Answer', AnswerFactory);
 
   function AnswerFactory($resource) {
-    return new $resource({
-
+    return $resource('/api/answers/:id', {
+      id: '@id'
     });
   };
 })();

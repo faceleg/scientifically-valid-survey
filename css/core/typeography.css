@@ -1,0 +1,36 @@
+html,
+input,
+textarea,
+button {
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  font-size: responsive;
+  min-font-size: 12px;
+  max-font-size: 21px;
+  lower-font-range: 420px;
+  upper-font-range: 1280px;
+}
+
+h1 {
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: responsive;
+  min-font-size: 20px;
+  max-font-size: 98px;
+  lower-font-range: 420px;
+  upper-font-range: 1280px;
+  color: $colour-heading;
+  margin-bottom: 20px;
+
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+small {
+  font-size: responsive;
+  min-font-size: 9px;
+  max-font-size: 15px;
+  lower-font-range: 420px;
+  upper-font-range: 1280px;
+}

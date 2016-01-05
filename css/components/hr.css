@@ -1,0 +1,4 @@
+hr {
+  border: 2px solid $colour-highlight;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,5 @@
+.home {
+  &__answer {
+    lost-center: calc($width-desktop/2);
+  }
+}

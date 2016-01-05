@@ -1,0 +1,14 @@
+button {
+  &:focus {
+    background-color: $colour-heading;
+    outline-width: 0;
+  }
+
+  background-color: $colour-highlight;
+  height: 30px;
+  border: none;
+
+  color: $colour-white;
+  cursor: pointer;
+  float: right;
+}

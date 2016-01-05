@@ -1,0 +1,12 @@
+textarea {
+  &:focus {
+    border: 1px solid $colour-highlight;
+    outline-width: 0;
+  }
+
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 20px;
+
+  text-indent: 5px;
+}

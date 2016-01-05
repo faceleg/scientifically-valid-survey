@@ -41,6 +41,8 @@ var paths = {
       'public/app/templates.js',
       'public/app/app.js',
       'public/app/**/*.js',
+      'public/components/question/question.js',
+      'public/components/answer/answer.js',
       'public/components/home/home.js',
       'public/components/**/*.js'
     ]
@@ -68,10 +70,12 @@ gulp.task('css', function() {
     require('postcss-import')({
       path: __dirname + '/css/'
     }),
+    require('postcss-extend')(),
     require('postcss-nested')(),
     require('postcss-simple-vars')(),
     require('autoprefixer')(),
     require('postcss-responsive-type')(),
+    require('postcss-color-function')(),
     require('lost')(),
   ]))
   .pipe(gulp.dest('public/build/css'));
@@ -168,10 +172,9 @@ gulp.task('watch', function() {
     reload
   ]);
 
-  // gulp.watch('server/**/*.js', [
-    // server.run,
-    // reload
-  // ]);
+  gulp.watch('server/**/*.js', [
+    reload
+  ]);
 });
 
 var lintspaces = require('gulp-lintspaces');

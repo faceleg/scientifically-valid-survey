@@ -1,12 +1,13 @@
+'use strict';
+
 (function() {
-  'use strict';
 
   angular.module('svs.adminQuestions')
   .config(routeConfig);
 
   // @ngInject
   function routeConfig($stateProvider) {
-    $stateProvider.state('admin-questions', {
+    $stateProvider.state('adminQuestions', {
       url: '/admin/questions',
       views: {
         main: {

@@ -51,10 +51,10 @@ module.exports = function(app) {
         include: [
           models.choice,
         ]
+      })
+      .then(function(_question_) {
+        res.json(_question_);
       });
-    })
-    .then(function(question) {
-      res.json(question);
     });
   });
 };

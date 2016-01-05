@@ -1,5 +1,6 @@
+'use strict';
+
 (function() {
-  'use strict';
 
   angular.module('svs', [
     'ngResource',
@@ -7,6 +8,7 @@
 
     'svs.templates',
 
-    'svs.home'
+    'svs.home',
+    'svs.adminQuestions'
   ]);
 })();

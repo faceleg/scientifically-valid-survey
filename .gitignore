@@ -1,0 +1,9 @@
+# Files
+config.sh
+
+# Directories
+bower_components/
+node_modules/
+npm-debug.log
+public/bower-components/
+

@@ -1,4 +1,5 @@
 hr {
   border: 2px solid $colour-highlight;
+  margin-top: 20px;
   margin-bottom: 20px;
 }

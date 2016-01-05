@@ -1,5 +1,18 @@
 .home {
   &__answer {
     lost-center: calc($width-desktop/2);
+
+    &__saved,
+    &__error {
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+
+    &__saved {
+      background-color: color($colour-heading lightness(75%));
+    }
+    &__error {
+      background-color: color($colour-highlight lightness(75%));
+    }
   }
 }

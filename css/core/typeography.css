@@ -34,3 +34,7 @@ small {
   lower-font-range: 420px;
   upper-font-range: 1280px;
 }
+
+em {
+  font-style: italic;
+}

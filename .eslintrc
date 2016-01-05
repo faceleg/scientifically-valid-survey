@@ -33,7 +33,7 @@
     ],
     "strict": [
       2,
-      "function"
+      "global"
     ],
     "guard-for-in": 2,
     "new-cap": 2,

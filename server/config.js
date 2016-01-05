@@ -24,6 +24,12 @@ var config = convict({
     format: String,
     default: null,
     env: 'TOKEN_SECRET'
+  },
+  MYSQL_CONNECTION: {
+    doc: 'The MySQL connection string',
+    format: String,
+    default: null,
+    env: 'MYSQL_CONNECTION'
   }
 });
 

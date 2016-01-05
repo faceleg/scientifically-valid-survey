@@ -1,0 +1,21 @@
+{
+  "name": "scientifically-valid-survey",
+  "version": "1.0.0",
+  "authors": [
+    "Michael Robinson <mike@pagesofinterest.net>"
+  ],
+  "description": "This is a completely valid survey tool",
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-mocks": "~1.4.8",
+    "ui-router": "~0.2.15"
+  }
+}

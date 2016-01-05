@@ -1,0 +1,22 @@
+<h1>Scientifically Valid Survey</h1>
+
+<p>
+    Please help science by answering the following psuedorandomly selected question
+</p>
+
+<hr/>
+
+<p>
+    {{ home.question.text }}
+</p>
+
+<hr/>
+
+<form name="answerForm" ng-submit="answerForm.$valid && home.save()">
+    <div class="home__answer">
+        <label for="answer">Your answer</label>
+        <textarea id=answer" ng-model="home.answer.text" placeholder="For science!"></textarea>
+        <button>Submit</button>
+    </div>
+</form>
+

@@ -1,9 +1,11 @@
 # Files
 config.sh
+public/index.html
 
 # Directories
 bower_components/
 node_modules/
 npm-debug.log
 public/bower-components/
+public/build/
 

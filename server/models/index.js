@@ -43,12 +43,12 @@ module.exports = new Promise(function(resolve) {
       force: true
     });
   })
-  .then(function() {
-    return fs.readFileAsync(path.resolve(__dirname, '../../data/questions.sql'), 'utf-8');
-  })
-  .then(function(file) {
-    return db.sequelize.query(file);
-  })
+  // .then(function() {
+  //   return fs.readFileAsync(path.resolve(__dirname, '../../data/questions.sql'), 'utf-8');
+  // })
+  // .then(function(file) {
+  //   return db.sequelize.query(file);
+  // })
   .then(function() {
     return resolve(db);
   });

@@ -39,11 +39,11 @@ module.exports = new Promise(function(resolve) {
     db.sequelize = sequelize;
     db.Sequelize = Sequelize;
 
-    // return db.sequelize.sync({
-    //   force: true
-    // });
-  // })
-  // .then(function() {
+    return db.sequelize.sync({
+      // force: true
+    });
+  })
+  .then(function() {
     return resolve(db);
   });
 });

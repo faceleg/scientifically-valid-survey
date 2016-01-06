@@ -12,3 +12,8 @@
  3. Run the application `./start-app.sh`
  4. Point a browser to `http://localhost:3000/`
  5. Do science
+
+## Notes
+
+`express-session` was used to store the respondent's id. This means that the app will "forget" that a respondent has
+answered a question if it is restarted.

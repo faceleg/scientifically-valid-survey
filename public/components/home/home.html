@@ -17,8 +17,8 @@
 <form name="answerForm" ng-submit="answerForm.$valid && home.saveAnswer()">
     <div class="home__answer">
         <div ng-repeat="choice in home.question.choices">
-            <label for="choice.id">
-                <input id="{{ choice.id }}" ng-value="choice.id" type="radio" ng-model="home.answer.choiceId">
+            <label>
+                <input ng-value="choice.id" type="radio" ng-model="home.answer.choiceId">
                 {{ choice.text }}
             </label>
         </div>

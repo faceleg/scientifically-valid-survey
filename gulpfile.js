@@ -30,10 +30,6 @@ var paths = {
     return buildPaths;
   },
   scripts: {
-    bowerComponents: [
-      'bower_components/ramda/dist/ramda.js',
-      'bower_components/a0-angular-storage/dist/angular-storage.js'
-    ],
     app: [
       'public/app/templates.js',
       'public/app/app.js',

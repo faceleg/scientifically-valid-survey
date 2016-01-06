@@ -1,5 +1,4 @@
 'use strict';
-var debug = require('debug')('sys:/api/answers');
 
 module.exports = function(app) {
   app.post('/api/answers', function(req, res) {
@@ -13,7 +12,7 @@ module.exports = function(app) {
 
     require('../models/index.js')
     .then(function(models) {
-      models.answer.build({
+      return models.answer.build({
         questionId: req.body.questionId,
         respondentId: req.respondent.id,
         choiceId: req.body.choiceId
@@ -22,6 +21,7 @@ module.exports = function(app) {
     })
     .then(function(answer) {
       res.json(answer);
+      return null;
     })
     .catch(function(error) {
       res.status(400).send(error.message);

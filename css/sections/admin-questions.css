@@ -9,7 +9,7 @@
 .admin-questions-dialog {
   &__choices {
     input {
-      width: 364px;
+      width: 85%;
     }
   }
 

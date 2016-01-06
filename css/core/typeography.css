@@ -10,6 +10,17 @@ button {
   upper-font-range: 1280px;
 }
 
+table {
+  button,
+  a {
+    font-size: responsive;
+    min-font-size: 12px;
+    max-font-size: 17px;
+    lower-font-range: 420px;
+    upper-font-range: 1280px;
+  }
+}
+
 h1,
 h2{
   font-family: 'Lobster', Georgia, Times, serif;

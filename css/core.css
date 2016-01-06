@@ -11,6 +11,7 @@
 @import "components/hr.css";
 @import "components/table.css";
 @import "components/ul.css";
+@import "components/ngdialog.css";
 
 @import "sections/layout.css";
 @import "sections/home.css";

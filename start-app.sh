@@ -15,9 +15,7 @@ export PORT=$PORT
 export NODE_ENV=$NODE_ENV
 export DEBUG=$DEBUG
 
-# npm install --production
-# node_modules/.bin/bower install --production
+npm install --production
+node_modules/.bin/bower install --production
 
 node_modules/.bin/gulp
-
-# node ./server/index.js

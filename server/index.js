@@ -2,7 +2,6 @@
 
 var config = require('./config.js');
 var express = require('express');
-var expressJwt = require('express-jwt');
 var session = require('express-session');
 
 var debug = require('debug')('svs');
@@ -19,13 +18,6 @@ app.use(session({
 }))
 
 app.use(require('./set-respondent.js'))
-
-// app.post([
-//   '/api/questions',
-//   '/api/choices'
-// ], expressJwt({
-//   secret: config.get('TOKEN_SECRET')
-// }));
 
 app.use(express.static('public'));
 

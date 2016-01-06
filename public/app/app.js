@@ -7,6 +7,7 @@
     'ui.router',
     'ngTable',
     'ngDialog',
+    'ngTouch',
 
     'svs.templates',
 

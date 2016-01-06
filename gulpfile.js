@@ -34,14 +34,14 @@ var paths = {
   scripts: {
     bowerComponents: [
       'bower_components/ramda/dist/ramda.js',
-      'bower_components/a0-angular-storage/dist/angular-storage.js',
-      'bower_components/ng-table/dist/ng-table.js'
+      'bower_components/a0-angular-storage/dist/angular-storage.js'
     ],
     app: [
       'public/app/templates.js',
       'public/app/app.js',
       'public/app/**/*.js',
       'public/components/question/question.js',
+      'public/components/choice/choice.js',
       'public/components/answer/answer.js',
       'public/components/home/home.js',
       'public/components/admin-questions/admin-questions.js',

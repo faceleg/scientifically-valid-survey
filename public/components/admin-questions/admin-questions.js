@@ -3,6 +3,7 @@
 (function() {
 
   angular.module('svs.adminQuestions', [
-    'svs.questionResource'
+    'svs.questionResource',
+    'svs.choiceResource'
   ]);
 })();

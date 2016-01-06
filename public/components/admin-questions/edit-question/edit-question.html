@@ -1,0 +1,20 @@
+<h1>Add New Question</h1>
+
+<form ng-submit="addQuestion.saveQuestion()">
+    <label>Question</label>
+    <input ng-model="addQuestion.question.text" placeholder="Your question">
+
+    <label>Choices</label>
+    <div ng-repeat="choice in addQuestion.choices">
+        <input ng-model="choice.text" placeholder="Possible choice">
+        <button class="add-question__choices__add" ng-click="addQuestion.addChoice()">+</button>
+        <button class="add-question__choices__remove" ng-click="addQuestion.removeChoice($index)">-</button>
+    </div>
+
+    <p ng-if="addQuestion.errors" class="add-question__answer__error">
+        <span ng-repeat="error in addQuestion.errors">{{ ::error }}</span>
+    </p>
+
+    <button type="submit">Save</button>
+    <a ng-click="addQuestion.cancel();">Cancel</a>
+</form>

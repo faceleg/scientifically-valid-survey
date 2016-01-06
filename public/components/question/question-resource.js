@@ -1,4 +1,5 @@
-'use scrict';
+'use strict';
+
 (function() {
   angular.module('svs.questionResource')
   .factory('Question', QuestionFactory);
@@ -9,10 +10,12 @@
       id: '@id'
     },
     {
+      query: {
+        url: URL,
+        isArray: true
+      },
       random: {
-        url: URL + 'random',
-        id: 'random',
-        params: 'random'
+        url: URL + 'random'
       }
     });
   };

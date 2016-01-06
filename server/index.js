@@ -2,7 +2,7 @@
 
 var config = require('./config.js');
 var express = require('express');
-// var expressJwt = require('express-jwt');
+var expressJwt = require('express-jwt');
 var session = require('express-session');
 
 var debug = require('debug')('svs');
@@ -20,12 +20,16 @@ app.use(session({
 
 app.use(require('./set-respondent.js'))
 
-// app.use('/api/admin', expressJwt({
+// app.post([
+//   '/api/questions',
+//   '/api/choices'
+// ], expressJwt({
 //   secret: config.get('TOKEN_SECRET')
 // }));
 
 require('./routes/questions.js')(app);
 require('./routes/answers.js')(app);
+require('./routes/choices.js')(app);
 
 app.use(express.static('public'));
 

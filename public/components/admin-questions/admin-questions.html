@@ -3,8 +3,20 @@
 <table ng-table="questions.tableParams" class="table">
     <tr ng-repeat="row in $data">
         <td class="table__container__question" data-title="'Question'" sortable="'text'">
-        <td>
             <p>{{ ::row.text }}</p>
+        </td>
+        <td class="table__container__choices" data-title="'Choices'">
+            <ul>
+                <li ng-repeat="choice in row.choices">
+                    {{ ::row.text }}
+                </li>
+            </ul>
+        </td>
+        <td>
+            <button ng-click="questions.editQuestion(row)">Edit</button>
+            <a ng-click="questions.removeQuestion(row)">Delete</a>
         </td>
     </tr>
 </table>
+
+<button ng-click="questions.addQuestion()">Add Question</button>

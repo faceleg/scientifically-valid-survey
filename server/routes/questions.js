@@ -25,6 +25,8 @@ module.exports = function(app) {
         'LEFT JOIN answers AS a ',
         'ON a.questionId = q.id ',
         'AND a.respondentId = $respondentId ',
+        'LEFT JOIN choices as c ',
+        'ON c.questionId = q.id ',
 
         'WHERE a.id IS NULL ',
 
@@ -34,7 +36,10 @@ module.exports = function(app) {
         model: models.question,
         bind: {
           respondentId: req.session.respondentId
-        }
+        },
+        include: [
+          models.choice,
+        ]
       })
     })
     .then(function(question) {
@@ -42,16 +47,49 @@ module.exports = function(app) {
         return res.status(404)
         .send('You have answered all of our scientific questions, thanks!');
       }
-      return question[0].reload({
-        include: [
-          models.choice,
-        ]
-      })
-      .then(function(_question_) {
-        res.json(_question_);
+      // return question[0].reload({
+      //   include: [
+      //     models.choice,
+      //   ]
+      // })
+      // .then(function(_question_) {
+        res.json(question[0]);
       });
     });
-  });
+  // });
+
+  app.post('/api/questions/:id', function(req, res) {
+    if (!req.body.text) {
+      return res.status(400).json('Answer must be provided');
+    }
+
+    require('../models/index.js')
+    .then(function(models) {
+      return models.question.findOne({
+        where: {
+          id: req.body.id
+        }
+      });
+    })
+    .then(function(question) {
+      if (!question) {
+        throw new ReferenceError();
+      }
+      question.text = req.body.text;
+      return question.save();
+    })
+    .then(function(question) {
+      res.json(question);
+    })
+    .catch(ReferenceError, function() {
+      res.status(404)
+      .send('Question does not exist');
+    })
+    .catch(function(error) {
+      res.status(400)
+      .send(error.message);
+    })
+  })
 
   app.post('/api/questions', function(req, res) {
     if (!req.body.text) {
@@ -74,7 +112,7 @@ module.exports = function(app) {
     })
   })
 
-  app.del('/api/questions/:id', function(req, res) {
+  app.delete('/api/questions/:id', function(req, res) {
     require('../models/index.js')
     .then(function(models) {
       return models.question.findOne({
@@ -84,10 +122,19 @@ module.exports = function(app) {
       })
     })
     .then(function(question) {
-      return question.destroy();
+      if (!question) {
+        throw new ReferenceError();
+      }
+      return question.destroy({
+        cascade: true
+      });
     })
     .then(function() {
-      res.status(204);
+      res.status(204).send();;
+    })
+    .catch(ReferenceError, function() {
+      res.status(404)
+      .send('Question does not exist');
     })
     .catch(function(error) {
       res.status(400)

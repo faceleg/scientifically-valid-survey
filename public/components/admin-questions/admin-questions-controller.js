@@ -7,6 +7,7 @@
 
   function AdminQuestionsController(Question, NgTableParams, $q, ngDialog) {
     var vm = this;
+    vm.error = null;
 
     vm.addQuestion = addQuestion;
     vm.editQuestion = editQuestion;
@@ -38,7 +39,7 @@
 
     function questionDialog(options) {
       ngDialog.open(angular.extend({}, options, {
-        className: 'ngdialog-theme-plain'
+        className: 'ngdialog-theme-plain admin-questions-dialog'
       }))
       .closePromise
       .then(function(message) {
@@ -74,6 +75,9 @@
       .$delete()
       .then(function() {
         vm.tableParams.reload();
+      })
+      .catch(function(response) {
+        vm.error = response.data;
       });
     }
   }

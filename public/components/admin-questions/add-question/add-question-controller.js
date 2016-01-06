@@ -7,7 +7,7 @@
 
   function AddQuestionController($scope, Question, Choice, $q) {
     var vm = this;
-    vm.cancel = $scope.closeThisDialog;
+    vm.close = $scope.closeThisDialog;
     vm.saveQuestion = saveQuestion;
     vm.question = new Question();
     vm.errors = [];
@@ -38,7 +38,7 @@
         }))
       })
       .then(function() {
-        vm.closeThisDialog(true);
+        vm.close(true);
       })
       .catch(function(response) {
         vm.errors.push(response.data);

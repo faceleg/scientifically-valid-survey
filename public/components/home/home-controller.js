@@ -10,7 +10,7 @@
     vm.success = null;
     vm.error = null;
 
-    vm.question = Question.random();
+    vm.question = randomQuestion();
 
     vm.answer = new Answer();
     vm.saveAnswer = saveAnswer;
@@ -25,13 +25,22 @@
 
       vm.answer.$save()
       .then(function() {
-        vm.question = Question.random();
+        vm.question = randomQuestion();
         vm.success = 'Your excellent answer was saved, do more science!';
         vm.answer = new Answer();
       })
       .catch(function(response) {
         vm.error = response.data;
       });
+    }
+
+    function randomQuestion() {
+      vm.error = null;
+      return Question.random()
+      .$promise
+      .catch(function(response) {
+        vm.error = response.data;
+      })
     }
   }
 })();

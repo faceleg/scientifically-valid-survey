@@ -1,20 +1,24 @@
-<h1>Add New Question</h1>
+<h2>Edit Question</h2>
 
-<form ng-submit="addQuestion.saveQuestion()">
+<form ng-submit="editQuestion.saveQuestion()">
     <label>Question</label>
-    <input ng-model="addQuestion.question.text" placeholder="Your question">
+    <input ng-model="editQuestion.question.text" placeholder="Your question">
 
-    <label>Choices</label>
-    <div ng-repeat="choice in addQuestion.choices">
+    <label>
+        Choices
+        <button class="admin-questions-dialog__choices__add" type="button" ng-click="editQuestion.addChoice()">+</button>
+    </label>
+    <div class="admin-questions-dialog__choices" ng-repeat="choice in editQuestion.choices">
         <input ng-model="choice.text" placeholder="Possible choice">
-        <button class="add-question__choices__add" ng-click="addQuestion.addChoice()">+</button>
-        <button class="add-question__choices__remove" ng-click="addQuestion.removeChoice($index)">-</button>
+        <button class="admin-questions-dialog__choices__remove" type="button" ng-click="editQuestion.removeChoice($index)">-</button>
     </div>
 
-    <p ng-if="addQuestion.errors" class="add-question__answer__error">
-        <span ng-repeat="error in addQuestion.errors">{{ ::error }}</span>
+    <p ng-if="editQuestion.errors" class="admin-questions-dialog__error">
+        <span ng-repeat="error in editQuestion.errors">{{ ::error }}</span>
     </p>
 
-    <button type="submit">Save</button>
-    <a ng-click="addQuestion.cancel();">Cancel</a>
+    <div class="button-wrapper">
+        <a ng-click="editQuestion.close();">Cancel</a>
+        <button type="submit">Save</button>
+    </div>
 </form>

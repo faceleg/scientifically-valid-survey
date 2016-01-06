@@ -3,8 +3,6 @@
 
 var R = require('ramda');
 var gulp = require('gulp');
-var gulpif = require('gulp-if');
-var argv = require('yargs').argv;
 
 var runSequence = require('run-sequence');
 var rename = require('gulp-rename');
@@ -130,51 +128,49 @@ gulp.task('ngtemplates', function() {
 });
 
 gulp.task('watch', function() {
-  var server = require('gulp-express');
-  var browserSync = require('browser-sync');
-  browserSync({
-    browser: 'google chrome'
+  var gls = require('gulp-live-server');
+  var server = gls.new('server/index.js');
+  server.start();
+
+  gulp.watch([
+    'public/build/**/*.css',
+    'public/build/**/*.js'
+  ], function (file) {
+    server.notify.apply(server, [file]);
   });
-  var reload = browserSync.reload;
-  server.run([
-    'server/index.js'
-  ]);
+
+  gulp.watch('server/**/*.js', function() {
+    server.start.bind(server)();
+  });
 
   gulp.watch('public/index-working.html', [
     'inject',
-    // server.run,
-    reload
+    function(file) {
+      server.notify.apply(server, [file]);
+    }
   ]);
 
   gulp.watch(paths.templates, [
     'ngtemplates',
-    // server.run,
-    reload
+    function(file) {
+      server.notify.apply(server, [file]);
+    }
   ]);
 
   gulp.watch(paths.css.all, [
     'css',
     'inject',
-    // server.run,
-    reload
+    function(file) {
+      server.notify.apply(server, [file]);
+    }
   ]);
-
-  // gulp.watch(paths.scripts.bowerComponents, [
-  //   'javascript-bower-components',
-  //   'inject',
-  //   // server.run,
-  //   reload
-  // ]);
 
   gulp.watch(paths.scripts.app, [
     'javascript-app',
     'inject',
-    // server.run,
-    reload
-  ]);
-
-  gulp.watch('server/**/*.js', [
-    reload
+    function(file) {
+      server.notify.apply(server, [file]);
+    }
   ]);
 });
 
@@ -204,14 +200,12 @@ gulp.task('build', function(callback) {
 var del = require('del');
 gulp.task('build-clean', function () {
   return del.sync([
-    'public/build/**/*',
+    'public/build/js/**/*',
     'public/index.html'
   ]);
 });
 
-gulp.task('default', [
-  'build',
-  'watch',
-  // 'browser-sync'
-]);
+gulp.task('default', function() {
+  runSequence('build', 'watch')
+});
 

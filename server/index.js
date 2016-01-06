@@ -27,17 +27,23 @@ app.use(require('./set-respondent.js'))
 //   secret: config.get('TOKEN_SECRET')
 // }));
 
+app.use(express.static('public'));
+
 require('./routes/questions.js')(app);
 require('./routes/answers.js')(app);
 require('./routes/choices.js')(app);
 
-app.use(express.static('public'));
+var path = require('path');
+app.route('/*') // this is the last route
+.get(function(req, res) {
+  res.sendfile(path.join(__dirname, '../public/index.html'));
+});
 
 app.use(unauthorisedErrorHandler);
 app.use(catchAllErrorHandler);
 
 process.on('uncaughtException', function(error) {
-  /* eslint-disable no-console, no-process-exit, lines-around-comment */
+  /* eslint-disable no-console, no-process-exit, lines-around-comment, angular/log */
   console.error('uncaughtException:', error.message);
   console.error(error.stack);
   process.exit(1);

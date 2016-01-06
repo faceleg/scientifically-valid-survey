@@ -1,0 +1,21 @@
+.admin-questions,
+.admin-questions-dialog {
+  &__error {
+    margin: 50px 0 10px 0;
+    background-color: color($colour-highlight lightness(75%));
+    clear: both;
+  }
+}
+.admin-questions-dialog {
+  &__choices {
+    input {
+      width: 364px;
+    }
+  }
+}
+
+.admin-questions__table {
+  &__scientific-instruments {
+    text-align: center;
+  }
+}

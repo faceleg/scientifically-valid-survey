@@ -8,23 +8,32 @@
 
 <hr/>
 
-<p>
-    {{ home.question.text }}
+<p class="home__question">
+    <strong>
+        {{ home.question.text }}
+    </strong>
 </p>
 
 <form name="answerForm" ng-submit="answerForm.$valid && home.saveAnswer()">
     <div class="home__answer">
         <div ng-repeat="choice in home.question.choices">
-            <label for="choice.id">{{ choice.text }}</label>
-            <input id="{{ choice.id }}"type="radio" ng-model="home.answer.choice">
+            <label for="choice.id">
+                <input id="{{ choice.id }}" ng-value="choice.id" type="radio" ng-model="home.answer.choiceId">
+                {{ choice.text }}
+            </label>
         </div>
         <p ng-if="home.success" class="home__answer__saved">{{ home.success }}</p>
         <p ng-if="home.error" class="home__answer__error">{{ home.error }}</p>
 
-        <button>Submit</button>
+        <div ng-if="home.question.id" class="button-wrapper">
+            {{ home.answer | json }}
+            <button type="submit">Submit</button>
+        </div>
     </div>
 </form>
 
 <hr/>
 
-<a ui-sref="adminQuestions">Scientists Only</a>
+<div class="science-links">
+    <a ui-sref="adminQuestions">Questions</a> &amp; <a ui-sref="adminQuestions">Answers</a>
+</div>

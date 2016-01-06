@@ -12,11 +12,17 @@
                 </li>
             </ul>
         </td>
-        <td>
+        <td class="admin-questions__table__scientific-instruments" data-title="'Scientific instruments'">
             <button ng-click="questions.editQuestion(row)">Edit</button>
             <a ng-click="questions.removeQuestion(row)">Delete</a>
         </td>
     </tr>
 </table>
 
-<button ng-click="questions.addQuestion()">Add Question</button>
+<p ng-if="questions.error" class="admin-questions__error">
+    {{ questions.error }}
+</p>
+
+<div class="button-wrapper">
+    <button ng-click="questions.addQuestion()">Add Question</button>
+</div>

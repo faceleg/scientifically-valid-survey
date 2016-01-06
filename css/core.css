@@ -6,8 +6,12 @@
 @import "components/label.css";
 @import "components/button.css";
 @import "components/input.css";
+@import "components/input-radio.css";
 @import "components/textarea.css";
 @import "components/hr.css";
+@import "components/table.css";
 
 @import "sections/layout.css";
 @import "sections/home.css";
+@import "sections/admin-questions.css";
+@import "sections/science-links.css";

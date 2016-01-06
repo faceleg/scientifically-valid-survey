@@ -1,14 +1,32 @@
 button {
-  &:focus {
-    background-color: $colour-heading;
-    outline-width: 0;
-  }
-
-  background-color: $colour-highlight;
-  height: 30px;
+  background-color: $colour-heading;
+  height: 40px;
+  padding: 0 15px;
   border: none;
 
   color: $colour-white;
   cursor: pointer;
-  float: right;
+
+  &:focus {
+    outline: 1px solid $colour-highlight;
+    outline-width: 1;
+  }
+
+  &+.button,
+  &+a {
+    margin-left: 10px;
+  }
+}
+
+.button-wrapper {
+  text-align: right;
+  line-height: 40px;
+  clear: both;
+
+  a {
+    height: 40px;
+    display: inline-block;
+
+    vertical-align: middle;
+  }
 }

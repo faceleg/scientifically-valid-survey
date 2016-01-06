@@ -4,13 +4,14 @@ textarea,
 button {
   font-family: 'Cabin', Helvetica, Arial, sans-serif;
   font-size: responsive;
-  min-font-size: 23px;
-  max-font-size: 23px;
+  min-font-size: 18px;
+  max-font-size: 20px;
   lower-font-range: 420px;
   upper-font-range: 1280px;
 }
 
-h1 {
+h1,
+h2{
   font-family: 'Lobster', Georgia, Times, serif;
   font-size: responsive;
   min-font-size: 40px;
@@ -23,20 +24,27 @@ h1 {
   text-align: center;
 }
 
+h2,
+.ngdialog.ngdialog-theme-plain .ngdialog-content h2 {
+  font-size: responsive;
+  min-font-size: 35px;
+  max-font-size: 65px;
+  lower-font-range: 420px;
+  upper-font-range: 1280px;
+
+  color: $colour-heading;
+}
+
 p {
   text-align: center;
 }
 
-small {
-  font-size: responsive;
-  min-font-size: 9px;
-  max-font-size: 15px;
-  lower-font-range: 420px;
-  upper-font-range: 1280px;
-}
-
 em {
   font-style: italic;
+}
+
+strong {
+  font-weight: bold;
 }
 
 a {

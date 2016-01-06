@@ -1,6 +1,12 @@
 .home {
+  &__question {
+    margin: 20px 0;
+  }
+
   &__answer {
     lost-center: calc($width-desktop/2);
+
+    padding: 10px 0;
 
     &__saved,
     &__error {

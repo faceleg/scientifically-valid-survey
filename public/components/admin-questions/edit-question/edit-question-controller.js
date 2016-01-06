@@ -6,13 +6,14 @@
   .controller('EditQuestionController', EditQuestionController);
 
   function EditQuestionController($scope, Question, Choice, $q, question) {
+    console.log(question);
     var vm = this;
     vm.close = $scope.closeThisDialog;
     vm.saveQuestion = saveQuestion;
     vm.question = question;
     vm.errors = [];
 
-    vm.choices = [];
+    vm.choices = question.choices;
     vm.removeChoice = removeChoice;
     vm.addChoice = addChoice;
     vm.addChoice();
@@ -30,11 +31,15 @@
     function saveQuestion() {
       vm.errors = [];
       vm.question
-      .$save()
+      .$update()
       .then(function() {
         return $q.all(vm.choices.map(function(choice) {
-          choice.questionId = question.id;
-          return choice.$save();
+          var choiceResource = new Choice(choice);
+          if (choice.id) {
+            return choiceResource.$update();
+          }
+          choiceResource.questionId = vm.question.id;
+          return choiceResource.$save();
         }))
       })
       .then(function() {

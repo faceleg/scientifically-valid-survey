@@ -39,17 +39,11 @@ module.exports = new Promise(function(resolve) {
     db.sequelize = sequelize;
     db.Sequelize = Sequelize;
 
-    return db.sequelize.sync({
-      force: true
-    });
-  })
+    // return db.sequelize.sync({
+    //   force: true
+    // });
+  // })
   // .then(function() {
-  //   return fs.readFileAsync(path.resolve(__dirname, '../../data/questions.sql'), 'utf-8');
-  // })
-  // .then(function(file) {
-  //   return db.sequelize.query(file);
-  // })
-  .then(function() {
     return resolve(db);
   });
 });

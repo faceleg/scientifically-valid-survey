@@ -5,12 +5,16 @@
   angular.module('svs.adminQuestions')
   .controller('AdminQuestionsController', AdminQuestionsController);
 
-  function AdminQuestionsController(Question, NgTableParams, $q, ngDialog) {
+  function AdminQuestionsController(Question, NgTableParams, $q, ngDialog, Answer) {
+
+    authenticationCheck();
+
     var vm = this;
     vm.error = null;
 
     vm.addQuestion = addQuestion;
     vm.editQuestion = editQuestion;
+    vm.viewAnswers = viewAnswers;
     vm.removeQuestion = removeQuestion;
 
     vm.tableParams = new NgTableParams({
@@ -49,6 +53,18 @@
       });
     }
 
+    function authenticationCheck() {
+      if (localStorage.getItem('usePowersForMostlyGood')) {
+        return;
+      }
+
+      questionDialog({
+        controller: 'AuthenticationCheckController',
+        controllerAs: 'authenticationCheck',
+        templateUrl: 'admin-questions/authentication-check/authentication-check.html'
+      })
+    }
+
     function addQuestion() {
       questionDialog({
         controller: 'AddQuestionController',
@@ -64,7 +80,25 @@
         templateUrl: 'admin-questions/edit-question/edit-question.html',
         resolve: {
           question: function() {
-            return new Question(row);
+            return new Question(angular.copy(row));
+          }
+        }
+      });
+    }
+
+    function viewAnswers(row) {
+      questionDialog({
+        controller: 'ViewAnswersController',
+        controllerAs: 'viewAnswers',
+        templateUrl: 'admin-questions/view-answers/view-answers.html',
+        resolve: {
+          question: function() {
+            return new Question(angular.copy(row));
+          },
+          answers: function() {
+            return Answer.query({
+              questionId: row.id
+            });
           }
         }
       });

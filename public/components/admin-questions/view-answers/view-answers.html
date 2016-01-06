@@ -1,0 +1,15 @@
+<h2>Viewing Answers</h2>
+
+<p>{{ viewAnswers.question.text }}</p>
+
+<p ng-if="!viewAnswers.answers.length">No respondents</p>
+
+<ul ng-if="viewAnswers.answers.length">
+    <li ng-repeat="answer in viewAnswers.answers">
+        {{ ::answer.choiceText }} ({{ ::answer.totalChosen}})
+    </li>
+</ul>
+
+<div class="button-wrapper">
+    <button ng-click="viewAnswers.close()">Close</button>
+</div>

@@ -9,11 +9,12 @@
     var vm = this;
     vm.success = null;
     vm.error = null;
-
-    vm.question = randomQuestion();
+    vm.question = null;
 
     vm.answer = new Answer();
     vm.saveAnswer = saveAnswer;
+
+    randomQuestion();
 
     return;
 
@@ -25,7 +26,7 @@
 
       vm.answer.$save()
       .then(function() {
-        vm.question = randomQuestion();
+        randomQuestion();
         vm.success = 'Your excellent answer was saved, do more science!';
         vm.answer = new Answer();
       })
@@ -38,7 +39,11 @@
       vm.error = null;
       return Question.random()
       .$promise
+      .then(function(question) {
+        vm.question = question;
+      })
       .catch(function(response) {
+        vm.question = null;
         vm.error = response.data;
       })
     }

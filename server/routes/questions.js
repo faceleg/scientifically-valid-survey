@@ -5,7 +5,11 @@ module.exports = function(app) {
   app.get('/api/questions', function(req, res) {
     require('../models/index.js')
     .then(function(models) {
-      return models.question.findAll();
+      return models.question.findAll({
+        include: [
+          models.choice
+        ]
+      });
     })
     .then(function(questions) {
       questions = questions || [];
@@ -25,8 +29,6 @@ module.exports = function(app) {
         'LEFT JOIN answers AS a ',
         'ON a.questionId = q.id ',
         'AND a.respondentId = $respondentId ',
-        'LEFT JOIN choices as c ',
-        'ON c.questionId = q.id ',
 
         'WHERE a.id IS NULL ',
 
@@ -36,10 +38,7 @@ module.exports = function(app) {
         model: models.question,
         bind: {
           respondentId: req.session.respondentId
-        },
-        include: [
-          models.choice,
-        ]
+        }
       })
     })
     .then(function(question) {
@@ -47,18 +46,23 @@ module.exports = function(app) {
         return res.status(404)
         .send('You have answered all of our scientific questions, thanks!');
       }
-      // return question[0].reload({
-      //   include: [
-      //     models.choice,
-      //   ]
-      // })
-      // .then(function(_question_) {
-        res.json(question[0]);
+
+      // This is a dumb hack, look away
+      return question[0].reload({
+        include: [
+          models.choice,
+        ]
+      })
+      .then(function(_question_) {
+        res.json(_question_);
+      })
+      .catch(function(error) {
+        res.status(400).send(error.message);
       });
     });
-  // });
+  });
 
-  app.post('/api/questions/:id', function(req, res) {
+  app.put('/api/questions/:id', function(req, res) {
     if (!req.body.text) {
       return res.status(400).json('Answer must be provided');
     }

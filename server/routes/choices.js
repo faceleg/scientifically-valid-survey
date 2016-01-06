@@ -2,7 +2,7 @@
 
 module.exports = function(app) {
 
-  app.post('/api/choices/:id', function(req, res) {
+  app.put('/api/choices/:id', function(req, res) {
     if (!req.body.text) {
       return res.status(400).json('Choice text must be provided');
     }

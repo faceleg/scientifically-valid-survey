@@ -8,11 +8,12 @@
         <td class="table__container__choices" data-title="'Choices'">
             <ul>
                 <li ng-repeat="choice in row.choices">
-                    {{ ::row.text }}
+                    {{ ::choice.text }}
                 </li>
             </ul>
         </td>
         <td class="admin-questions__table__scientific-instruments" data-title="'Scientific instruments'">
+            <button ng-click="questions.viewAnswers(row)">Answers</button>
             <button ng-click="questions.editQuestion(row)">Edit</button>
             <a ng-click="questions.removeQuestion(row)">Delete</a>
         </td>

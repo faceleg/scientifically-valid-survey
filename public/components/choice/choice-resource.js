@@ -7,6 +7,10 @@
   function ChoiceFactory($resource) {
     return $resource('/api/choices/:id', {
       id: '@id'
+    }, {
+      update: {
+        method: 'PUT'
+      }
     });
   };
 })();

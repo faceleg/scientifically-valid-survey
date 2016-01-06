@@ -26,7 +26,6 @@
         <p ng-if="home.error" class="home__answer__error">{{ home.error }}</p>
 
         <div ng-if="home.question.id" class="button-wrapper">
-            {{ home.answer | json }}
             <button type="submit">Submit</button>
         </div>
     </div>
@@ -35,5 +34,5 @@
 <hr/>
 
 <div class="science-links">
-    <a ui-sref="adminQuestions">Questions</a> &amp; <a ui-sref="adminQuestions">Answers</a>
+    <a ui-sref="adminQuestions">Questions &amp; Answers</a>
 </div>

@@ -12,6 +12,10 @@
       width: 364px;
     }
   }
+
+  ul {
+    margin-left: 50px;
+  }
 }
 
 .admin-questions__table {

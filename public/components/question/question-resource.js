@@ -16,6 +16,9 @@
       },
       random: {
         url: URL + 'random'
+      },
+      update: {
+        method: 'PUT'
       }
     });
   };

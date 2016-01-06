@@ -19,15 +19,9 @@ var paths = {
       'public/build/css/core.css'
     ];
 
-    buildPaths = buildPaths.concat(R.map(function(bowerPath) {
-      return bowerPath.replace(/bower_components/, 'public/build/bower-components');
-    }, paths.scripts.bowerComponents));
-
-    buildPaths = buildPaths.concat(R.map(function(appPath) {
+    return buildPaths.concat(R.map(function(appPath) {
       return appPath.replace(/public/, 'public/build/');
     }, paths.scripts.app));
-
-    return buildPaths;
   },
   scripts: {
     app: [
@@ -74,13 +68,6 @@ gulp.task('css', function() {
     require('lost')(),
   ]))
   .pipe(gulp.dest('public/build/css'));
-});
-
-gulp.task('javascript-bower-components', function() {
-  return gulp.src(paths.scripts.bowerComponents, {
-    base: './bower-components/'
-  })
-  .pipe(gulp.dest('public/build/bower-components/'));
 });
 
 gulp.task('javascript-app', function() {
@@ -186,7 +173,6 @@ gulp.task('build', function(callback) {
   runSequence(
     'build-clean',
     'css',
-    'javascript-bower-components',
     'ngtemplates',
     'javascript-app',
     'inject',

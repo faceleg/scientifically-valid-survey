@@ -12,7 +12,7 @@
     "lintspaces": "node_modules/.bin/gulp lintspaces",
     "lint": "node_modules/.bin/eslint . && npm run lintspaces",
     "templates": "node_modules/.bin/gulp ngtemplates",
-    "pretest-karma": "npm run templates",
+    "pretest-karma": "node_modules/.bin/bower install --allow-root && npm run templates",
     "pretest-karma-watch": "npm run templates",
     "test-karma": "node_modules/karma/bin/karma start karma.conf.js --no-auto-watch --single-run --reporters 'coverage,dots'",
     "test-karma-watch": "node_modules/karma/bin/karma start karma.conf.js --reporters 'coverage,dots'",

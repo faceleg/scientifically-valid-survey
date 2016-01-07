@@ -9,7 +9,13 @@ describe('home controller', function() {
 
   var randomQuestion = {
     id: 123,
-    text: 'This is some text'
+    text: 'This is some text',
+    choices: [
+      {
+        id: 456,
+        text: 'This is a choice'
+      }
+    ]
   };
 
   var Question;
@@ -72,7 +78,7 @@ describe('home controller', function() {
     expect(HomeController.error).toEqual('No more questions');
   });
 
-  it('should call resource.$save when saveAnswer is called, and set vm.success', function() {
+  it('should call resource.$create when saveAnswer is called, and set vm.success', function() {
     $httpBackend.when('GET', '/public-api/questions/random')
     .respond(200, randomQuestion);
 
@@ -81,15 +87,15 @@ describe('home controller', function() {
 
     HomeController.answer.choiceId = 1;
 
-    $httpBackend.when('POST', '/api/answers')
+    $httpBackend.when('POST', '/public-api/answers')
     .respond(200, {
       id: 456,
       choiceId: 1
     });
-    spyOn(HomeController.answer, '$save').and.callThrough();
+    spyOn(HomeController.answer, '$create').and.callThrough();
 
     HomeController.saveAnswer();
-    expect(HomeController.answer.$save).toHaveBeenCalled();
+    expect(HomeController.answer.$create).toHaveBeenCalled();
 
     $httpBackend.flush();
 
@@ -106,9 +112,9 @@ describe('home controller', function() {
 
     HomeController.answer.choiceId = 1;
 
-    $httpBackend.when('POST', '/api/answers')
+    $httpBackend.when('POST', '/public-api/answers')
     .respond(400, 'Bad request');
-    spyOn(HomeController.answer, '$save').and.callThrough();
+    spyOn(HomeController.answer, '$create').and.callThrough();
 
     HomeController.saveAnswer();
 

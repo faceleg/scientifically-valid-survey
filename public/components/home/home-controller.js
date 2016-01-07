@@ -24,7 +24,7 @@
 
       vm.answer.questionId = vm.question.id;
 
-      vm.answer.$save()
+      vm.answer.$create()
       .then(function() {
         randomQuestion();
         vm.success = 'Your excellent answer was saved, do more science!';

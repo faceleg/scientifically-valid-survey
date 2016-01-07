@@ -28,7 +28,6 @@ module.exports = function(app) {
 
     require('../../models/index.js')
     .then(function(models) {
-      var params
       return models.question.findOne({
         where: {
           id: req.body.id

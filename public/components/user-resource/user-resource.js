@@ -40,9 +40,6 @@
     }
 
     // Static methods
-    User.isLoggedIn = function() {
-      return Boolean(store.get('token'));
-    }
 
     User.login = function login(credentials) {
       return $http.post('/authentication/login', credentials)

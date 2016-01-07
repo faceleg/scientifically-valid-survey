@@ -12,7 +12,7 @@
     vm.question = question;
     vm.errors = [];
 
-    vm.choices = question.choices;
+    vm.choices = angular.copy(question.choices);
     vm.choicesToRemove = [];
 
     vm.removeChoice = removeChoice;
@@ -34,6 +34,7 @@
 
     function saveQuestion() {
       vm.errors = [];
+      vm.question.choices = angular.copy(vm.choices);
       vm.question
       .$update()
       .then(function() {
@@ -47,7 +48,7 @@
         }))
       })
       .then(function() {
-        return $.all(vm.choicesToRemove.map(function(choice) {
+        return $q.all(vm.choicesToRemove.map(function(choice) {
           return (new Choice(choice))
           .$delete();
         }));

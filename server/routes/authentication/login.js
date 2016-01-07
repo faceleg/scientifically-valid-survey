@@ -17,12 +17,12 @@ module.exports = function(app) {
       }
 
       var useraccount = models.useraccount;
-      var token = models.token;
+      var tokenModel = models.token;
       useraccount.login(req.body.email, req.body.password)
       .then(function(user) {
         return [
           user,
-          token.build({
+          tokenModel.build({
             userId: user.id,
             userAgent: req.headers['user-agent'],
             type: 'Login',

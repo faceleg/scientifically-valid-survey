@@ -53,6 +53,8 @@ describe('admin questions controller', function() {
   });
 
   it('should set the correct properties on vm', function() {
+    $httpBackend.expect('GET', '/api/users/current')
+    .respond(200, {});
     $httpBackend.when('GET', '/api/questions')
     .respond(200, questions);
 
@@ -62,9 +64,12 @@ describe('admin questions controller', function() {
     expect(AdminQuestionsController.editQuestion).toEqual(jasmine.any(Function));
     expect(AdminQuestionsController.removeQuestion).toEqual(jasmine.any(Function));
     expect(AdminQuestionsController.viewAnswers).toEqual(jasmine.any(Function));
+    $httpBackend.flush();
   });
 
   it('should open an ngDialog when addQuestion is called', function() {
+    $httpBackend.expect('GET', '/api/users/current')
+    .respond(200, {});
     spyOn(ngDialog, 'open').and.callFake(function(options) {
       expect(options.controller).toEqual('AddQuestionController');
       expect(options.controllerAs).toEqual('addQuestion');
@@ -76,9 +81,12 @@ describe('admin questions controller', function() {
 
     var AdminQuestionsController = controller();
     AdminQuestionsController.addQuestion();
+    $httpBackend.flush();
   });
 
   it('should reload the table when a dialog is closed with a truthy value', function() {
+    $httpBackend.expect('GET', '/api/users/current')
+    .respond(200, {});
     var AdminQuestionsController = controller();
 
     spyOn(AdminQuestionsController.tableParams, 'reload');
@@ -97,9 +105,12 @@ describe('admin questions controller', function() {
     $rootScope.$digest();
 
     expect(AdminQuestionsController.tableParams.reload).toHaveBeenCalled();
+    $httpBackend.flush();
   });
 
   it('should not reload the table when a dialog is closed with a truthy value', function() {
+    $httpBackend.expect('GET', '/api/users/current')
+    .respond(200, {});
     var AdminQuestionsController = controller();
 
     spyOn(AdminQuestionsController.tableParams, 'reload');
@@ -118,9 +129,12 @@ describe('admin questions controller', function() {
     $rootScope.$digest();
 
     expect(AdminQuestionsController.tableParams.reload).not.toHaveBeenCalled();
+    $httpBackend.flush();
   });
 
   it('should open an ngDialog when editQuestion is called', function() {
+    $httpBackend.expect('GET', '/api/users/current')
+    .respond(200, {});
     spyOn(ngDialog, 'open').and.callFake(function(options) {
       expect(options.controller).toEqual('EditQuestionController');
       expect(options.controllerAs).toEqual('editQuestion');
@@ -135,10 +149,13 @@ describe('admin questions controller', function() {
     AdminQuestionsController.editQuestion({
       id: 1
     });
+    $httpBackend.flush();
   });
 
   it('should delete the given question when removeQuestion is called', function() {
-    $httpBackend.when('GET', '/api/questions')
+    $httpBackend.expect('GET', '/api/users/current')
+    .respond(200, {});
+    $httpBackend.when('GET', '/api/questions?limit=5&offset=1&orderBy=text&orderBy=desc')
     .respond(200, questions);
     $httpBackend.expect('DELETE', '/api/questions/1')
     .respond(204);
@@ -153,6 +170,8 @@ describe('admin questions controller', function() {
   });
 
   it('should open an ngDialog when viewAnswers is called', function() {
+    $httpBackend.expect('GET', '/api/users/current')
+    .respond(200, {});
     spyOn(ngDialog, 'open').and.callFake(function(options) {
       expect(options.controller).toEqual('ViewAnswersController');
       expect(options.controllerAs).toEqual('viewAnswers');
@@ -168,9 +187,13 @@ describe('admin questions controller', function() {
     AdminQuestionsController.viewAnswers({
       id: 1
     });
+
+    $httpBackend.flush();
   });
 
   it('should attempt to resolve the given dependiencies when viewAnswers is called', function() {
+    $httpBackend.expect('GET', '/api/users/current')
+    .respond(200, {});
     $httpBackend.expect('GET', '/api/answers?questionId=1')
     .respond(200, []);
 

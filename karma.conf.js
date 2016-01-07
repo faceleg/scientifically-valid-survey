@@ -4,6 +4,7 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     files: [
+      'bower_components/rxjs/dist/rx.all.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-animate/angular-animate.js',
@@ -11,8 +12,8 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/ngDialog/js/ngDialog.js',
-      'bower_components/angular-retina/build/angular-retina.js',
       'bower_components/a0-angular-storage/dist/angular-storage.js',
+      'bower_components/rx-angular/dist/rx.angular.js',
       'bower_components/ng-table/dist/ng-table.js',
       'public/app/templates.js',
       'public/app/app.js',

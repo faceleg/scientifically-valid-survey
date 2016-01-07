@@ -39,11 +39,11 @@ describe('user resource', function() {
       it('should react with the current user', function() {
         $httpBackend.when('GET', '/api/users/current')
         .respond(200, {
-          email: 'active@66pix.com'
+          email: 'active@svs.com'
         });
 
         User.current(function(user) {
-          expect(user.email).toEqual('active@66pix.com');
+          expect(user.email).toEqual('active@svs.com');
         });
 
         $httpBackend.flush();
@@ -52,13 +52,13 @@ describe('user resource', function() {
       it('should update with the current user when updateCurrent is called', function() {
         $httpBackend.when('GET', '/api/users/current')
         .respond(200, {
-          email: 'active@66pix.com'
+          email: 'active@svs.com'
         });
 
         var count = 0;
         User.current(function(user) {
           count += 1;
-          expect(user.email).toEqual('active@66pix.com');
+          expect(user.email).toEqual('active@svs.com');
         });
 
         User.updateCurrent();

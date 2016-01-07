@@ -2,7 +2,6 @@
 
 var config = require('../../config.js');
 var jwt = require('jsonwebtoken');
-var debug = require('debug')('authentication/logout');
 
 module.exports = function(app) {
   require('../../models/index.js')
@@ -16,7 +15,6 @@ module.exports = function(app) {
         models.token.findById(jwtToken.tokenId)
         .then(function(token) {
           if (!token) {
-            debug('Logout called with a token not represented in DB');
             return res.sendStatus(201);
           }
           token.isRevoked = true;
@@ -35,7 +33,6 @@ module.exports = function(app) {
 
 function handleError(error, res, next) {
   if (error.name === 'JsonWebTokenError') {
-    debug('Logout called with an invalid JWT token');
     return res.sendStatus(201);
   }
   next(error);

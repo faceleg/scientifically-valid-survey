@@ -22,6 +22,10 @@ Everybody's favourite rapper, Dr. Dooom is the only scientist with an account:
 > drdoom@svs.com
 > secretpassword
 
+## Tests
+
+ - Frontend: `npm run test-karma`
+
 ## Notes
 
  - If you've changed the port from the default `3030`, you must adjust the URL used to access the site accordingly.

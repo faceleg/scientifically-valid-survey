@@ -14,12 +14,12 @@
 
     function confirm() {
       localStorage.usePowersForMostlyGood = true;
-      $scope.closeThisDialog();
+      $scope.closeThisDialog(); // eslint-disable-line angular/controller-as
     }
 
     function close() {
       $state.go('home');
-      $scope.closeThisDialog();
+      $scope.closeThisDialog(); // eslint-disable-line angular/controller-as
     }
   }
 

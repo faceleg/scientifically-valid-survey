@@ -158,7 +158,7 @@ gulp.task('watch', function() {
 });
 
 var lintspaces = require('gulp-lintspaces');
-gulp.task('lint-css', function() {
+gulp.task('lintspaces', function() {
   return gulp.src(paths.css.all.concat(['public/**/*.html']))
   .pipe(lintspaces({
     newlineMaximum: 2,

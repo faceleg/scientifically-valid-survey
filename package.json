@@ -11,7 +11,9 @@
     "pretest": "npm install && node_modules/.bin/bower install",
     "lintspaces": "node_modules/.bin/gulp lintspaces",
     "lint": "node_modules/.bin/eslint . && npm run lintspaces",
-    "test": "npm run lint && test",
+    "test-karma": "node_modules/karma/bin/karma start karma.conf.js --no-auto-watch --single-run --reporters 'coverage,dots'",
+    "test-karma-watch": "node_modules/karma/bin/karma start karma.conf.js --reporters 'coverage,dots'",
+    "test": "npm run lint && npm run test karma",
     "start-app": "./start-app.sh"
   },
   "author": "Michael Robinson",

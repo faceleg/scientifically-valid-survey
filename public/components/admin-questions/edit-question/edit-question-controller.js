@@ -6,7 +6,6 @@
   .controller('EditQuestionController', EditQuestionController);
 
   function EditQuestionController($scope, Question, Choice, $q, question) {
-    console.log(question);
     var vm = this;
     vm.close = $scope.closeThisDialog;
     vm.saveQuestion = saveQuestion;

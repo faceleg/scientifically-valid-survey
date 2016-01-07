@@ -40,7 +40,7 @@ describe('home controller', function() {
   });
 
   it('should set the correct properties on vm', function() {
-    $httpBackend.when('GET', '/api/questions/random')
+    $httpBackend.when('GET', '/public-api/questions/random')
     .respond(200, randomQuestion);
 
     var HomeController = controller();
@@ -54,7 +54,7 @@ describe('home controller', function() {
   });
 
   it('should populate vm.question with a random question', function() {
-    $httpBackend.when('GET', '/api/questions/random')
+    $httpBackend.when('GET', '/public-api/questions/random')
     .respond(200, randomQuestion);
 
     var HomeController = controller();
@@ -63,7 +63,7 @@ describe('home controller', function() {
   });
 
   it('should populate vm.error if random question call fails', function() {
-    $httpBackend.when('GET', '/api/questions/random')
+    $httpBackend.when('GET', '/public-api/questions/random')
     .respond(404, 'No more questions');
 
     var HomeController = controller();
@@ -73,7 +73,7 @@ describe('home controller', function() {
   });
 
   it('should call resource.$save when saveAnswer is called, and set vm.success', function() {
-    $httpBackend.when('GET', '/api/questions/random')
+    $httpBackend.when('GET', '/public-api/questions/random')
     .respond(200, randomQuestion);
 
     var HomeController = controller();
@@ -98,7 +98,7 @@ describe('home controller', function() {
   });
 
   it('should populate vm.error if an answer save fails', function() {
-    $httpBackend.when('GET', '/api/questions/random')
+    $httpBackend.when('GET', '/public-api/questions/random')
     .respond(200, randomQuestion);
 
     var HomeController = controller();

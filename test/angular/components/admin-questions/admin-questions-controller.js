@@ -7,6 +7,7 @@ describe('admin questions controller', function() {
   beforeEach(module('ngDialog'));
   beforeEach(module('svs.templates'));
   beforeEach(module('svs.questionResource'));
+  beforeEach(module('svs.userResource'));
   beforeEach(module('svs.answerResource'));
   beforeEach(module('svs.adminQuestions'));
 

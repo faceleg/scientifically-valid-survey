@@ -10,7 +10,7 @@
 
   // @ngInject
   function UserResource(
-    $resource, $http, $rootScope, $window, $q, rx, store
+    $resource, $http, $rootScope, $window, $q, rx, store, $location
   ) {
 
     var User = $resource('/api/users/:id', {

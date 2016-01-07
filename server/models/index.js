@@ -9,7 +9,11 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../database.js')[env];
 var db        = {};
 
-var sequelize = new Sequelize(config.url);
+var sequelize = new Sequelize(config.url, {
+  dialectOptions: {
+    multipleStatements: true
+  }
+});
 
 module.exports = new Promise(function(resolve) {
   fs

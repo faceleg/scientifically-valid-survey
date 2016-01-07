@@ -13,6 +13,8 @@
     vm.errors = [];
 
     vm.choices = question.choices;
+    vm.choicesToRemove = [];
+
     vm.removeChoice = removeChoice;
     vm.addChoice = addChoice;
     vm.addChoice();
@@ -24,7 +26,10 @@
     }
 
     function removeChoice($index) {
-      vm.choices.splice($index, 1)
+      var choiceToRemove = vm.choices.splice($index, 1)[0];
+      if (choiceToRemove.id) {
+        vm.choicesToRemove.push(choiceToRemove);
+      }
     }
 
     function saveQuestion() {
@@ -40,6 +45,12 @@
           choiceResource.questionId = vm.question.id;
           return choiceResource.$save();
         }))
+      })
+      .then(function() {
+        return $.all(vm.choicesToRemove.map(function(choice) {
+          return (new Choice(choice))
+          .$delete();
+        }));
       })
       .then(function() {
         vm.close(true);

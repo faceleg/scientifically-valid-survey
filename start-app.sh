@@ -18,6 +18,6 @@ export DEBUG=$DEBUG
 npm install --production
 node_modules/.bin/bower install --production
 
-node_modules/.bin/sequelize db:seed
+node server/seed-db.js
 
 node_modules/.bin/gulp

@@ -28,6 +28,7 @@ app.use(express.static('public'));
 app.use(require('connect-livereload')());
 
 require('./routes/authentication/login.js')(app);
+require('./routes/authentication/logout.js')(app);
 
 require('./routes/public-api/questions.js')(app);
 

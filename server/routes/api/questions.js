@@ -5,11 +5,15 @@ module.exports = function(app) {
   app.get('/api/questions', function(req, res) {
     require('../../models/index.js')
     .then(function(models) {
-      return models.question.findAll({
+      var params = {
         include: [
           models.choice
         ]
-      });
+      };
+      params.order = [req.query.orderBy];
+      params.offset = req.query.offset;
+      params.limit = req.query.limit;
+      return models.question.findAll(params);
     })
     .then(function(questions) {
       questions = questions || [];
@@ -24,6 +28,7 @@ module.exports = function(app) {
 
     require('../../models/index.js')
     .then(function(models) {
+      var params
       return models.question.findOne({
         where: {
           id: req.body.id

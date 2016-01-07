@@ -17,26 +17,32 @@
 
     vm.tableParams = new NgTableParams({
       sorting: {
-        name: 'desc'
+        text: 'desc'
       },
       page: 1,
-      count: 10
+      count: 5
     }, {
-      counts: [],
+      counts:[5, 10, 100],
       getData: getData
     });
 
-function getData(params) {
-        return $q(function(resolve) {
-          console.log(Question.query());
-          Question.query()
-          .$promise
-          .then(function(questions) {
-            params.total(questions.length);
-            return resolve(questions);
-          })
+    function getData(params) {
+      return $q(function(resolve) {
+        Question.query({
+          orderBy: (function(sorting) {
+            var key = Object.keys(sorting)[0];
+            return [key, sorting[key]];
+          })(params.sorting()),
+          offset: params.page(),
+          limit: params.count()
         })
-      }
+        .$promise
+        .then(function(questions) {
+          params.total(questions.length);
+          return resolve(questions);
+        })
+      })
+    }
     User.current(function(currentUser) {
       vm.currentUser = currentUser;
     });

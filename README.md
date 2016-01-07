@@ -2,7 +2,7 @@
 
 For scientists.
 
-![Obligitory meme](https://imgflip.com/i/wyp1d)
+![Obligitory meme](https://i.imgflip.com/wyp1d.jpg)
 
 ## Requirements
 

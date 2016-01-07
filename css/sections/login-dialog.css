@@ -1,0 +1,12 @@
+.login-dialog {
+  &__error {
+    margin-bottom: 10px;
+    background-color: color($colour-highlight lightness(75%));
+    clear: both;
+
+    ng-message {
+      display: block;
+    }
+  }
+}
+

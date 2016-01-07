@@ -25,9 +25,14 @@ var paths = {
   },
   scripts: {
     app: [
+      'bower_components/rxjs/dist/rx.all.js',
+      'bower_components/a0-angular-storage/dist/angular-storage.js',
+      'bower_components/rx-angular/dist/rx.angular.js',
       'public/app/templates.js',
       'public/app/app.js',
       'public/app/**/*.js',
+      'public/components/user-resource/user-resource.js',
+      'public/components/login-dialog/login-dialog.js',
       'public/components/question/question.js',
       'public/components/choice/choice.js',
       'public/components/answer/answer.js',

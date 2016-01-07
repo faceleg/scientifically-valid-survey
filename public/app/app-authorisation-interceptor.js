@@ -8,8 +8,8 @@
   function authInterceptor($rootScope, $q, $location, $injector) {
     return {
       responseError: function(response) {
-        if (!/^\/admin/.test($location.path())) {
-          return $q.resolve(response.config);
+        if (response.config.url === '/authentication/login') {
+          return $q.reject(response);
         }
 
         if (response.status === 401 && $location.path() !== '/login') {

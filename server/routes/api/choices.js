@@ -11,7 +11,7 @@ module.exports = function(app) {
       return res.status(400).json('Question ID must be provided');
     }
 
-    require('../models/index.js')
+    require('../../models/index.js')
     .then(function(models) {
       return models.choice.findOne({
         where: {
@@ -49,7 +49,7 @@ module.exports = function(app) {
       return res.status(400).json('Question ID must be provided');
     }
 
-    require('../models/index.js')
+    require('../../models/index.js')
     .then(function(models) {
       return models.choice.build({
         questionId: req.body.questionId,

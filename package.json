@@ -23,6 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^6.2.3",
+    "bcryptjs": "^2.3.0",
     "bluebird": "^3.1.1",
     "body-parser": "^1.14.2",
     "bower": "^1.7.2",
@@ -33,6 +34,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-angular": "^0.15.0",
     "express": "^4.13.3",
+    "express-jwt": "^3.3.0",
     "express-session": "^1.12.1",
     "gulp": "^3.9.0",
     "gulp-angular-templatecache": "^1.8.0",
@@ -43,6 +45,7 @@
     "gulp-postcss": "^6.0.1",
     "gulp-rename": "^1.2.2",
     "jasmine-core": "^2.4.1",
+    "jsonwebtoken": "^5.5.4",
     "karma": "^0.13.18",
     "karma-coverage": "^0.5.3",
     "karma-jasmine": "^0.3.6",
@@ -61,6 +64,7 @@
     "ramda": "^0.19.1",
     "run-sequence": "^1.1.5",
     "sequelize": "^3.15.1",
+    "sequelize-cli": "^2.2.1",
     "yargs": "^3.31.0"
   }
 }

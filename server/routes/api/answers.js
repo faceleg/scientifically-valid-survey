@@ -10,7 +10,7 @@ module.exports = function(app) {
       return res.status(400).send('Choice ID must be provided');
     }
 
-    require('../models/index.js')
+    require('../../models/index.js')
     .then(function(models) {
       return models.answer.build({
         questionId: req.body.questionId,
@@ -30,7 +30,7 @@ module.exports = function(app) {
 
   app.get('/api/answers', function(req, res) {
     var models;
-    require('../models/index.js')
+    require('../../models/index.js')
     .then(function(_models_) {
       models = _models_;
       return models.sequelize.query([

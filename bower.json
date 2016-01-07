@@ -22,6 +22,10 @@
     "angular-resource": "~1.4.8",
     "angular-animate": "~1.4.8",
     "angular-ui-router": "~0.2.15",
-    "ngDialog": "~0.5.6"
+    "ngDialog": "~0.5.6",
+    "angular-retina": "~0.3.3",
+    "a0-angular-storage": "~0.0.13",
+    "rx-angular": "angular-rx#~1.0.4",
+    "rxjs": "~4.0.7"
   }
 }

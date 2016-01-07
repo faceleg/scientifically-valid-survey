@@ -41,11 +41,35 @@
       .$promise
       .then(function(question) {
         vm.question = question;
+        if (vm.question.choices) {
+          shuffleArray(vm.question.choices);
+        }
       })
       .catch(function(response) {
         vm.question = null;
         vm.error = response.data;
       })
     }
+
+    // http://stackoverflow.com/a/20791049/187954
+    function shuffleArray(subject) {
+      var remainingElements = subject.length
+      var temporaryElement;
+      var newIndex;
+
+      // While there remain elements to shuffle
+      while (remainingElements) {
+        // Pick a remainingkkda element…
+        newIndex = Math.floor(Math.random() * remainingElements--);
+
+        // And swap it with the current element.
+        temporaryElement = subject[remainingElements];
+        subject[remainingElements] = subject[newIndex];
+        subject[newIndex] = temporaryElement;
+      }
+
+      return subject;
+    }
   }
+
 })();

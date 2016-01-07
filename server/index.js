@@ -2,13 +2,13 @@
 
 var config = require('./config.js');
 var express = require('express');
+var expressJwt = require('express-jwt');
 var session = require('express-session');
 
 var debug = require('debug')('svs');
 
 var app = express();
 
-app.use(require('connect-livereload')());
 
 app.use(require('body-parser').json());
 app.use(session({
@@ -19,16 +19,27 @@ app.use(session({
 
 app.use(require('./set-respondent.js'))
 
+app.use('/api', expressJwt({
+  secret: config.get('TOKEN_SECRET')
+}));
+
 app.use(express.static('public'));
 
-require('./routes/questions.js')(app);
-require('./routes/answers.js')(app);
-require('./routes/choices.js')(app);
+app.use(require('connect-livereload')());
+
+require('./routes/authentication/login.js')(app);
+
+require('./routes/public-api/questions.js')(app);
+
+require('./routes/api/users.js')(app);
+require('./routes/api/questions.js')(app);
+require('./routes/api/answers.js')(app);
+require('./routes/api/choices.js')(app);
 
 var path = require('path');
 app.route('/*') // this is the last route
 .get(function(req, res) {
-  res.sendfile(path.join(__dirname, '../public/index.html'));
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.use(unauthorisedErrorHandler);

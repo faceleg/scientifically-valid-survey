@@ -14,7 +14,8 @@ button {
 
   &+.button,
   &+a {
-    margin-left: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
   }
 }
 
@@ -26,6 +27,7 @@ button {
   a {
     height: 40px;
     display: inline-block;
+    margin-right: 10px;
 
     vertical-align: middle;
   }
@@ -35,5 +37,6 @@ table {
   button {
     height: 20px;
     padding: 0 5px;
+    margin-bottom: 5px;
   }
 }

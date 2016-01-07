@@ -2,14 +2,14 @@
 
 <form ng-submit="editQuestion.saveQuestion()">
     <label>Question</label>
-    <input ng-model="editQuestion.question.text" placeholder="Your question">
+    <input tabindex="1" ng-model="editQuestion.question.text" placeholder="Your question">
 
     <label>
         Choices
-        <button class="admin-questions-dialog__choices__add" type="button" ng-click="editQuestion.addChoice()">+</button>
+        <button tabindex="3" class="admin-questions-dialog__choices__add" type="button" ng-click="editQuestion.addChoice()">+</button>
     </label>
     <div class="admin-questions-dialog__choices" ng-repeat="choice in editQuestion.choices">
-        <input ng-model="choice.text" placeholder="Possible choice">
+        <input tabindex="2" ng-model="choice.text" placeholder="Possible choice">
         <button class="admin-questions-dialog__choices__remove" type="button" ng-click="editQuestion.removeChoice($index)">-</button>
     </div>
 

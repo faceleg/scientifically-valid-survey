@@ -5,17 +5,15 @@
   .factory('Question', QuestionFactory);
 
   function QuestionFactory($resource) {
-    var URL = '/api/questions/';
-    return $resource(URL + ':id', {
+    return $resource('/api/questions/:id', {
       id: '@id'
     },
     {
       query: {
-        url: URL,
         isArray: true
       },
       random: {
-        url: URL + 'random'
+        url: '/public-api/questions/random'
       },
       update: {
         method: 'PUT'

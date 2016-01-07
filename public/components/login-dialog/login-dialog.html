@@ -1,0 +1,53 @@
+<div class="login-dialog">
+  <form
+    novalidate
+    ng-submit = "loginForm.$valid && login.login()"
+    name      = "loginForm" >
+
+      <h2>Please Login</h2>
+
+    <label for="login-dialog__email">Email Address</label>
+    <input
+      required
+      type                = "email"
+      id                  = "login-dialog__email"
+      placeholder         = "you@example.com"
+      name                = "email"
+      ng-model            = "login.user.email"
+    />
+    <p
+      ng-messages
+      class = "login-dialog__error"
+      ng-if = "loginForm.$submitted && loginForm.email.$invalid"
+      for   = "loginForm.email.$error">
+      <ng-message when="required">Email is required</ng-message>
+      <ng-message when="email">Please enter a valid email address</ng-message>
+    </p>
+
+    <label for="login-dialog__password">Password</label>
+    <input
+      required
+      type                   = "password"
+      id                     = "login-dialog__password"
+      name                   = "password"
+      ng-model               = "login.user.password"
+      validator              = "required"
+    />
+    <p
+      ng-messages
+      class = "login-dialog__error"
+      ng-if = "loginForm.$submitted && loginForm.password.$invalid"
+      for   = "loginForm.password.$error">
+      <ng-message when="required">Password is required</ng-message>
+    </p>
+
+    <p class="login-dialog__error" ng-if="login.error">
+      {{ login.error.message  }}
+    </p>
+
+    <div class="login-dialog__forgotten-password">
+      <a ui-sref="forgot-password">Forgotten Password?</a>
+      <button class="button--highlight">Login</button>
+    </div>
+  </form>
+</div>

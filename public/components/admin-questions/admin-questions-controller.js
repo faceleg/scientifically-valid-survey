@@ -5,12 +5,10 @@
   angular.module('svs.adminQuestions')
   .controller('AdminQuestionsController', AdminQuestionsController);
 
-  function AdminQuestionsController(Question, NgTableParams, $q, ngDialog, Answer) {
-
-    // authenticationCheck();
-
+  function AdminQuestionsController(Question, NgTableParams, $q, ngDialog, Answer, User) {
     var vm = this;
     vm.error = null;
+    vm.currentUser = null;
 
     vm.addQuestion = addQuestion;
     vm.editQuestion = editQuestion;
@@ -25,18 +23,22 @@
       count: 10
     }, {
       counts: [],
-      getData: function(params) {
+      getData: getData
+    });
+
+function getData(params) {
         return $q(function(resolve) {
+          console.log(Question.query());
           Question.query()
           .$promise
           .then(function(questions) {
-
             params.total(questions.length);
-
             return resolve(questions);
           })
         })
       }
+    User.current(function(currentUser) {
+      vm.currentUser = currentUser;
     });
 
     return;
@@ -51,18 +53,6 @@
           vm.tableParams.reload();
         }
       });
-    }
-
-    function authenticationCheck() {
-      if (localStorage.getItem('usePowersForMostlyGood')) {
-        return;
-      }
-
-      questionDialog({
-        controller: 'AuthenticationCheckController',
-        controllerAs: 'authenticationCheck',
-        templateUrl: 'admin-questions/authentication-check/authentication-check.html'
-      })
     }
 
     function addQuestion() {

@@ -7,10 +7,11 @@
     'ui.router',
     'ngTable',
     'ngDialog',
+    'angular-storage',
     'ngTouch',
 
     'svs.templates',
-
+    'svs.loginDialog',
     'svs.home',
     'svs.adminQuestions'
   ]);

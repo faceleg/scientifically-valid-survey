@@ -3,3 +3,4 @@ node_modules/
 coverage/
 public/bower_components/
 public/app/templates.js
+public/build/

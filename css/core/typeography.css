@@ -22,7 +22,7 @@ table {
 }
 
 h1,
-h2{
+h2 {
   font-family: 'Lobster', Georgia, Times, serif;
   font-size: responsive;
   min-font-size: 40px;
@@ -48,6 +48,7 @@ h2,
 
 p {
   text-align: center;
+  line-height: 1.24;
 }
 
 em {
@@ -61,4 +62,5 @@ strong {
 a {
   color: $colour-highlight;
   cursor: pointer;
+  text-decoration: underline;
 }

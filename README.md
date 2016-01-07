@@ -1,6 +1,7 @@
 # Scientifically Valid Survey
 [![Circle CI](https://circleci.com/gh/faceleg/scientifically-valid-survey.svg?style=svg)](https://circleci.com/gh/faceleg/scientifically-valid-survey)
 [![Code Climate](https://codeclimate.com/github/faceleg/scientifically-valid-survey/badges/gpa.svg)](https://codeclimate.com/github/faceleg/scientifically-valid-survey)
+[![Test Coverage](https://codeclimate.com/github/faceleg/scientifically-valid-survey/badges/coverage.svg)](https://codeclimate.com/github/faceleg/scientifically-valid-survey/coverage)
 
 A reference application showing how one may approach an Express/MySQL/AngularJS stack.
 

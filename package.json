@@ -19,6 +19,7 @@
     "test": "npm run lint && npm run test-karma",
     "coverage-average-karma": "./node_modules/.bin/coverage-average coverage/report-summary/text-summary.txt  --limit 95",
     "start-app": "./start-app.sh",
+    "code-climate": "CODECLIMATE_REPO_TOKEN=690cca4a3bf63b31ecb2864056c0be77601fb58fcea3cb13134d681963ef561e node_modules/.bin/codeclimate-test-reporter < coverage/report-lcov/lcov.info",
     "precommit": "npm run lint && npm run test-karma && npm run coverage-average-karma"
   },
   "author": "Michael Robinson",
@@ -29,6 +30,7 @@
     "bluebird": "^3.1.1",
     "body-parser": "^1.14.2",
     "bower": "^1.7.2",
+    "codeclimate-test-reporter": "^0.1.1",
     "connect-livereload": "^0.5.4",
     "convict": "^1.0.2",
     "coverage-average": "^1.0.4",

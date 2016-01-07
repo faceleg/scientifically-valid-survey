@@ -31,6 +31,7 @@ require('./routes/authentication/login.js')(app);
 require('./routes/authentication/logout.js')(app);
 
 require('./routes/public-api/questions.js')(app);
+require('./routes/public-api/answers.js')(app);
 
 require('./routes/api/users.js')(app);
 require('./routes/api/questions.js')(app);

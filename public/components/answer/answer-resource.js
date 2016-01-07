@@ -11,6 +11,10 @@
     }, {
       query: {
         isArray: true
+      },
+      create: {
+        url: '/public-api/answers',
+        method: 'POST'
       }
     });
   };

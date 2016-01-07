@@ -1,4 +1,5 @@
 # Scientifically Valid Survey
+[![Circle CI](https://circleci.com/gh/faceleg/scientifically-valid-survey.svg?style=svg)](https://circleci.com/gh/faceleg/scientifically-valid-survey)
 
 ![Obligitory meme](https://i.imgflip.com/wyp1d.jpg)
 

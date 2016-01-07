@@ -7,7 +7,7 @@
 
   function AdminQuestionsController(Question, NgTableParams, $q, ngDialog, Answer) {
 
-    authenticationCheck();
+    // authenticationCheck();
 
     var vm = this;
     vm.error = null;

@@ -4,15 +4,14 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     files: [
-      'bower-components/angular/angular.js',
-      'bower-components/angular-aria/angular-aria.js',
-      'bower-components/angular-messages/angular-messages.js',
-      'bower-components/angular-resource/angular-resource.js',
-      'bower-components/angular-animate/angular-animate.js',
-      'bower-components/angular-mocks/angular-mocks.js',
-      'bower-components/angular-ui-router/release/angular-ui-router.js',
-      'bower-components/ng-dialog/js/ngDialog.js',
-      'bower-components/ng-table/dist/ng-table.js',
+      'bower_components/angular/angular.js',
+      'bower_components/angular-resource/angular-resource.js',
+      'bower_components/angular-animate/angular-animate.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-touch/angular-touch.js',
+      'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/ngDialog/js/ngDialog.js',
+      'bower_components/ng-table/dist/ng-table.js',
       'public/app/templates.js',
       'public/app/app.js',
       'public/app/**/*.js',
@@ -22,7 +21,7 @@ module.exports = function(config) {
       'public/components/home/home.js',
       'public/components/admin-questions/admin-questions.js',
       'public/components/**/*.js',
-      'test/angular/unit/**/*.js'
+      'test/angular/**/*.js'
     ],
     browsers: ['PhantomJS'],
     frameworks: [
@@ -37,7 +36,6 @@ module.exports = function(config) {
       'karma-phantomjs-launcher',
       'karma-coverage',
       'karma-jasmine',
-      'karma-junit-reporter',
       'karma-notify-reporter'
     ],
     notifyReporter: {
@@ -48,9 +46,6 @@ module.exports = function(config) {
       reporters: [{
         type: 'html',
         subdir: 'report-html'
-      }, {
-        type: 'lcov',
-        subdir: 'report-lcov'
       },
       {
         type: 'text-summary',

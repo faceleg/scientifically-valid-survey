@@ -1,7 +1,5 @@
 # Scientifically Valid Survey
 
-For scientists.
-
 ![Obligitory meme](https://i.imgflip.com/wyp1d.jpg)
 
 ## Requirements

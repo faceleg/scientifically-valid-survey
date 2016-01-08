@@ -7,10 +7,12 @@ RUN mkdir -p /srv/www
 WORKDIR /srv/www
 
 COPY package.json /srv/www/
+COPY bower.json /srv/www/
 COPY . /srv/www/
 
-RUN rm -rf node_modules
+RUN npm install
 RUN npm install -g pm2
+RUN /srv/www/node_modules/.bin/bower install --allow-root
 
 RUN apt-get -qq autoremove -y --purge
 RUN rm -rf ~/.node-gyp

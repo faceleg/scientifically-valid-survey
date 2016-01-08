@@ -13,15 +13,15 @@ TAG="svs-$ENVIRONMENT-$BRANCH-$CIRCLE_BUILD_NUM"
 
 echo ""
 echo "Building initial image"
-docker build -t "svs:$TAG-layered" .
+docker build -t "faceleg/svs:$TAG-layered" .
 
 echo ""
 echo "Saving initial image to disk"
-docker save "svs:$TAG-layered" > layered.tar
+docker save "faceleg/svs:$TAG-layered" > layered.tar
 
 echo ""
 echo "Squashing image"
-sudo docker-squash -i layered.tar -o squashed.tar -t "svs:$TAG"
+sudo docker-squash -i layered.tar -o squashed.tar -t "faceleg/svs:$TAG"
 
 echo ""
 echo "Loading squashed image"
@@ -29,7 +29,7 @@ cat squashed.tar | docker load
 
 echo ""
 echo "Pushing squashed image"
-docker push "svs:$TAG"
+docker push "faceleg/svs:$TAG"
 
 echo ""
 echo "Creating deployment Dockerrun.aws.json file"

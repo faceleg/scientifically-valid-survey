@@ -37,7 +37,7 @@ module.exports = new Promise(function(resolve) {
     db.Sequelize = require('sequelize');
 
     return db.sequelize.sync({
-      // force: true
+      force: true
     });
   })
   .then(function() {

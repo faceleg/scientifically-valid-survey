@@ -34,7 +34,7 @@ module.exports = new Promise(function(resolve) {
     });
 
     db.sequelize = sequelize;
-    db.Sequelize = require('Sequelize');
+    db.Sequelize = require('sequelize');
 
     return db.sequelize.sync({
       // force: true

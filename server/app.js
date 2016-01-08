@@ -40,11 +40,11 @@ require('./routes/api/questions.js')(app);
 require('./routes/api/answers.js')(app);
 require('./routes/api/choices.js')(app);
 
-var path = require('path');
-app.route('/*') // this is the last route
-.get(function(req, res) {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
-});
+// var path = require('path');
+// app.route('/*') // this is the last route
+// .get(function(req, res) {
+//   res.sendFile(path.join(__dirname, '../public/index.html'));
+// });
 
 app.use(unauthorisedErrorHandler);
 app.use(catchAllErrorHandler);

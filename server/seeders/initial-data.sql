@@ -1,3 +1,5 @@
+INSERT INTO `useraccounts` VALUES (NULL,'Dr. Doooom','drdoom@svs.com','$2a$10$s7BtT0EJ3NCcKWTUKEA68.dGFa3lVu8SotoXYRbmeIDD39bJ24Xra','Active',NULL,0,-1,'2016-01-07 10:20:11','2016-01-07 10:20:11');
+
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
 INSERT INTO `questions` VALUES (1,'What is Nathan\'s favourite frozen yogurt flavour?','2016-01-07 10:28:52','2016-01-07 10:28:52'),(3,'What is Archer\'s biggest fear?','2016-01-07 10:36:13','2016-01-07 10:36:13'),(4,'Who gets all \"Murder Face\" when he\'s angry?','2016-01-07 10:52:46','2016-01-07 10:52:46'),(5,'Killface is the a main character of what T.V. show?','2016-01-07 10:53:44','2016-01-07 10:53:44'),(6,'China is...','2016-01-07 10:54:41','2016-01-07 10:54:41'),(7,'Who really likes writing code?','2016-01-07 10:57:37','2016-01-07 10:57:37'),(8,'Sporks are a:','2016-01-07 11:13:58','2016-01-07 11:13:58');
@@ -22,8 +24,3 @@ INSERT INTO `answers` VALUES (1,'2016-01-07 10:58:10','2016-01-07 10:58:10',7,3,
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
-LOCK TABLES `useraccounts` WRITE;
-/*!40000 ALTER TABLE `useraccounts` DISABLE KEYS */;
-INSERT INTO `useraccounts` VALUES (3,'Dr. Doooom','drdoom@svs.com','$2a$10$s7BtT0EJ3NCcKWTUKEA68.dGFa3lVu8SotoXYRbmeIDD39bJ24Xra','Active',NULL,0,-1,'2016-01-07 10:20:11','2016-01-07 10:20:11');
-/*!40000 ALTER TABLE `useraccounts` ENABLE KEYS */;
-UNLOCK TABLES;

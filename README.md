@@ -37,3 +37,4 @@ The frontend tests may be run with `npm run test-karma`. Backend tests require `
  - If you've changed the port from the default `3030`, you must adjust the URL used to access the site accordingly.
  - `express-session` was used to store the respondent's id. This means that the app will "forget" that a respondent has
 answered a question if it is restarted.
+ - The database will be erased and rebuild every time the application is started.

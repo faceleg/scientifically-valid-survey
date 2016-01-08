@@ -32,7 +32,10 @@
       vm.question
       .$save()
       .then(function(question) {
-        return $q.all(vm.choices.map(function(choice) {
+        return $q.all(vm.choices.filter(function(choice) {
+          return choice.text;
+        })
+        .map(function(choice) {
           choice.questionId = question.id;
           return choice.$save();
         }))

@@ -34,11 +34,13 @@
 
     function saveQuestion() {
       vm.errors = [];
-      vm.question.choices = angular.copy(vm.choices);
       vm.question
       .$update()
       .then(function() {
-        return $q.all(vm.choices.map(function(choice) {
+        return $q.all(vm.choices.filter(function(choice) {
+          return choice.text;
+        })
+        .map(function(choice) {
           var choiceResource = new Choice(choice);
           if (choice.id) {
             return choiceResource.$update();

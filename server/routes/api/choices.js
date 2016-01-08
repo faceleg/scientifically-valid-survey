@@ -41,6 +41,35 @@ module.exports = function(app) {
     })
   });
 
+  app.delete('/api/choices/:id', function(req, res) {
+    require('../../models/index.js')
+    .then(function(models) {
+      return models.choice.findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+    })
+    .then(function(choice) {
+      if (!choice) {
+        throw new ReferenceError();
+      }
+      return choice.destroy();
+    })
+    .then(function() {
+      res.status(204).send();
+      return null;
+    })
+    .catch(ReferenceError, function() {
+      res.status(404)
+      .send('Choice does not exist');
+    })
+    .catch(function(error) {
+      res.status(400)
+      .send(error.message);
+    })
+  });
+
   app.post('/api/choices', function(req, res) {
     if (!req.body.text) {
       return res.status(400).send('Choice text must be provided');

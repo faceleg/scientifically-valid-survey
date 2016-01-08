@@ -88,6 +88,11 @@ describe('admin add question controller', function() {
     .respond(200, {});
 
     var AddQuestionController = controller();
+    AddQuestionController.choices = [
+      new Choice({
+        text: 'aslkdjasldkj'
+      })
+    ];
     AddQuestionController.saveQuestion();
     $httpBackend.flush();
   });
@@ -110,6 +115,11 @@ describe('admin add question controller', function() {
     .respond(400, 'an error');
 
     var AddQuestionController = controller();
+    AddQuestionController.choices = [
+      new Choice({
+        text: 'aslkdjasldkj'
+      })
+    ];
     AddQuestionController.saveQuestion();
     $httpBackend.flush();
 

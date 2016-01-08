@@ -43,10 +43,10 @@ function isLocked(user) {
   return !!(user.lockUntil && user.lockUntil > Date.now());
 }
 
-function login(UserAccount) {
+function login(useraccount) {
   return function(email, password) {
     return new Promise(function(resolve, reject) {
-      UserAccount.findOne({
+      useraccount.findOne({
         where: {
           email: email
         }
@@ -93,6 +93,7 @@ function login(UserAccount) {
 
           resolve(user);
         });
+        return null;
       })
       .catch(reject);
     });

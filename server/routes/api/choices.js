@@ -4,18 +4,18 @@ module.exports = function(app) {
 
   app.put('/api/choices/:id', function(req, res) {
     if (!req.body.text) {
-      return res.status(400).json('Choice text must be provided');
+      return res.status(400).send('Choice text must be provided');
     }
 
     if (!req.body.questionId) {
-      return res.status(400).json('Question ID must be provided');
+      return res.status(400).send('Question ID must be provided');
     }
 
     require('../../models/index.js')
     .then(function(models) {
       return models.choice.findOne({
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       })
     })
@@ -29,6 +29,7 @@ module.exports = function(app) {
     })
     .then(function(choice) {
       res.json(choice);
+      return null;
     })
     .catch(ReferenceError, function() {
       res.status(404)
@@ -42,11 +43,11 @@ module.exports = function(app) {
 
   app.post('/api/choices', function(req, res) {
     if (!req.body.text) {
-      return res.status(400).json('Choice text must be provided');
+      return res.status(400).send('Choice text must be provided');
     }
 
     if (!req.body.questionId) {
-      return res.status(400).json('Question ID must be provided');
+      return res.status(400).send('Question ID must be provided');
     }
 
     require('../../models/index.js')
@@ -61,7 +62,7 @@ module.exports = function(app) {
       res.json(choice);
     })
     .catch(function(error) {
-      res.status(400)
+      res.status(500)
       .send(error.message);
     })
   });

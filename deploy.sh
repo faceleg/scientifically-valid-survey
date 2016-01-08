@@ -45,7 +45,7 @@ aws s3 cp $DOCKERRUN_FILE s3://$EB_BUCKET/$DOCKERRUN_FILE \
 echo ""
 echo "Creating application version"
 aws elasticbeanstalk create-application-version \
-  --application-name "svs-${ENVIRONMENT}" \
+  --application-name "scientifically-valid-survey" \
   --version-label $TAG \
   --source-bundle S3Bucket=$EB_BUCKET,S3Key=$DOCKERRUN_FILE \
   --region ap-southeast-2

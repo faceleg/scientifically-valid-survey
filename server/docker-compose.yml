@@ -5,6 +5,11 @@ test:
         TOKEN_SECRET: "this is a secret"
         NODE_ENV: "development"
         MYSQL_CONNECTION: "mysql://svs:secret@mysql/svs"
+        RDS_PORT: "3306"
+        RDS_USERNAME: "svs"
+        RDS_PASSWORD: "secret"
+        RDS_HOSTNAME: "mysql"
+        RDS_DB_NAME: "svs"
     links:
         - mysql
     volumes:

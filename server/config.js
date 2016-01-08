@@ -25,11 +25,35 @@ var config = convict({
     default: null,
     env: 'TOKEN_SECRET'
   },
-  MYSQL_CONNECTION: {
-    doc: 'The MySQL connection string',
-    format: String,
+  RDS_PORT: {
+    doc: 'The database port.',
+    format: Number,
     default: null,
-    env: 'MYSQL_CONNECTION'
+    env: 'RDS_PORT'
+  },
+  RDS_USERNAME: {
+    default: null,
+    format: String,
+    doc: 'The database username.',
+    env: 'RDS_USERNAME'
+  },
+  RDS_PASSWORD: {
+    default: '',
+    format: String,
+    doc: 'The database password.',
+    env: 'RDS_PASSWORD'
+  },
+  RDS_HOSTNAME: {
+    default: null,
+    format: String,
+    doc: 'The database hostname.',
+    env: 'RDS_HOSTNAME'
+  },
+  RDS_DB_NAME: {
+    default: null,
+    format: String,
+    doc: 'The database name.',
+    env: 'RDS_DB_NAME'
   }
 });
 

@@ -15,21 +15,22 @@ A reference application showing how one may approach an Express/MySQL/AngularJS 
 ## Running
 
  1. Clone the repository `git clone https://github.com/faceleg/scientifically-valid-survey.git`
- 2. Copy `_config.sh` to `config.sh`, open `config.sh` and change `MYSQL_CONNECTION` to be a valid connection string to an available MySQL database, e.g. `mysql://username:password@localhost/svs`
- 3. Run the application `./start-app.sh`
+ 2. Copy `_config.sh` to `config.sh`, open `config.sh` and change `RDS_*` variables to suit your environment
+ 3. Run the application `./start-local.sh`
  4. Point a browser to `http://localhost:3030/`
  5. Do science
 
 ## Login details
 
-Everybody's favourite rapper, Dr. Dooom is the only scientist with an account:
+Due to budget constrains, registration has not been implemented. Everybody's favourite rapper, Dr. Dooom is the only scientist with an account:
 
-> drdoom@svs.com
-> secretpassword
+Username: drdoom@svs.com
+
+The password is a super-secret, if you need to know it you've been told.
 
 ## Tests
 
- - Frontend: `npm run test-karma`
+The frontend tests may be run with `npm run test-karma`. Backend tests require `docker-compose`, and may be run with `npm run test-server`. The CircleCi build may be viewed by clicking on the *hopefully* green button: [![Circle CI](https://circleci.com/gh/faceleg/scientifically-valid-survey.svg?style=svg)](https://circleci.com/gh/faceleg/scientifically-valid-survey)
 
 ## Notes
 

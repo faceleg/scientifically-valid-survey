@@ -35,7 +35,7 @@ describe('routes api questions GET', function() {
 
   it('should respond with the correct object', function(done) {
     request(app)
-      .get('/api/questions?orderBy=text&orderBy=desc&offset=0&limit=5')
+      .get('/api/questions?orderBy=text&orderBy=desc&offset=1&limit=5')
       .set('authorization', jwtToken)
       .expect(200, [])
       .end(done);

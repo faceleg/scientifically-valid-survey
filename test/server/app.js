@@ -35,8 +35,7 @@ describe('app', function() {
   it('should serve index.html if no other route succeeds', function(done) {
     request(app)
       .get('/not-a-real-route')
-      .expect(200)
-      .end(function(error, response) {
+      .expect(200, function(error, response) {
         if (error) {
           throw error;
         }

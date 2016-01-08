@@ -1,0 +1,16 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "faceleg/svs:<TAG>",
+    "Update": "true"
+  },
+  "Authentication": {
+    "Bucket": "svs-credentials",
+    "Key": ".dockerconfig"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "3000"
+    }
+  ]
+}

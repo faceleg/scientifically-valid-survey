@@ -13,7 +13,7 @@ TAG="svs-$ENVIRONMENT-$BRANCH-$CIRCLE_BUILD_NUM"
 
 echo ""
 echo "Building initial image"
-docker build --build-arg NPM_AUTH_TOKEN="$NPM_AUTH_TOKEN" -t "svs:$TAG-layered" .
+docker build -t "svs:$TAG-layered" .
 
 echo ""
 echo "Saving initial image to disk"

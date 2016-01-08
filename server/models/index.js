@@ -3,22 +3,10 @@
 var Promise         = require('bluebird');
 var fs              = Promise.promisifyAll(require('fs'));
 var path            = require('path');
-var Sequelize       = require('sequelize');
 var basename        = path.basename(module.filename);
-var env             = process.env.NODE_ENV || 'development';
-var sequelizeConfig = require(__dirname + '/../database.js')[env];
 var db              = {};
-var debugSql        = require('debug')('svs:sql');
 
-var sequelize = new Sequelize(sequelizeConfig.database, sequelizeConfig.username, sequelizeConfig.password, {
-  host: sequelizeConfig.host,
-  port: sequelizeConfig.port,
-  dialect: sequelizeConfig.dialect,
-  logging: debugSql,
-  dialectOptions: {
-    multipleStatements: true
-  }
-});
+var sequelize = require('../sequelize.js');
 
 module.exports = new Promise(function(resolve) {
   fs
@@ -46,7 +34,7 @@ module.exports = new Promise(function(resolve) {
     });
 
     db.sequelize = sequelize;
-    db.Sequelize = Sequelize;
+    db.Sequelize = require('Sequelize');
 
     return db.sequelize.sync({
       // force: true

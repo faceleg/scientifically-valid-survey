@@ -13,6 +13,7 @@
 @import "components/ul.css";
 @import "components/ngdialog.css";
 
+@import "sections/angular-loading-bar.css";
 @import "sections/layout.css";
 @import "sections/home.css";
 @import "sections/admin-questions.css";

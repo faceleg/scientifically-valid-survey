@@ -9,6 +9,7 @@
     'ngDialog',
     'angular-storage',
     'ngTouch',
+    'angular-loading-bar',
 
     'svs.templates',
     'svs.loginDialog',

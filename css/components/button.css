@@ -4,6 +4,7 @@ button {
   padding: 0 15px;
   border: none;
 
+  user-select: none;
   color: $colour-white;
   cursor: pointer;
 
@@ -22,7 +23,12 @@ button {
 .button-wrapper {
   text-align: right;
   line-height: 40px;
+  padding: 0 10px;
   clear: both;
+
+  &--bottom-margin {
+    margin-bottom: 50px;
+  }
 
   a {
     height: 40px;

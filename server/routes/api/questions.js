@@ -3,21 +3,32 @@
 module.exports = function(app) {
 
   app.get('/api/questions', function(req, res) {
+    var models;
     require('../../models/index.js')
-    .then(function(models) {
+    .then(function(_models_) {
+      models = _models_;
       var params = {
         include: [
           models.choice
         ]
       };
       params.order = [req.query.orderBy];
-      params.offset = parseInt(req.query.offset, 10);
       params.limit = parseInt(req.query.limit, 10);
+      params.offset = parseInt(req.query.offset, 10) * params.limit - params.limit;
       return models.question.findAll(params);
     })
     .then(function(questions) {
+      return [
+        questions,
+        models.question.count()
+      ]
+    })
+    .spread(function(questions, total) {
       questions = questions || [];
-      res.json(questions);
+      res.json({
+        data: questions,
+        total: total
+      });
     });
   });
 

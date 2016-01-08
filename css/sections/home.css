@@ -6,7 +6,7 @@
   &__answer {
     lost-center: calc($width-desktop/2);
 
-    padding: 10px 0;
+    padding: 10px;
 
     &__saved,
     &__error {

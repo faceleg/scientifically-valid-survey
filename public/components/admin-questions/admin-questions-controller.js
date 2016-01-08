@@ -37,9 +37,9 @@
           limit: params.count()
         })
         .$promise
-        .then(function(questions) {
-          params.total(questions.length);
-          return resolve(questions);
+        .then(function(response) {
+          params.total(response.total);
+          return resolve(response.data);
         })
       })
     }

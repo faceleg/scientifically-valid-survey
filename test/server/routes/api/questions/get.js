@@ -37,7 +37,10 @@ describe('routes api questions GET', function() {
     request(app)
       .get('/api/questions?orderBy=text&orderBy=desc&offset=1&limit=5')
       .set('authorization', jwtToken)
-      .expect(200, [])
+      .expect(200, {
+        data: [],
+        total: 0
+      })
       .end(done);
   });
 

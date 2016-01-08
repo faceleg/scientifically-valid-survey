@@ -11,7 +11,10 @@ describe('admin questions controller', function() {
   beforeEach(module('svs.answerResource'));
   beforeEach(module('svs.adminQuestions'));
 
-  var questions = [];
+  var questions = {
+    data: [],
+    total: 0
+  };
 
   var Question;
   var Answer;

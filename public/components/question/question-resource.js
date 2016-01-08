@@ -10,7 +10,7 @@
     },
     {
       query: {
-        isArray: true
+        isArray: false
       },
       random: {
         url: '/public-api/questions/random'

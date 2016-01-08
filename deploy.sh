@@ -38,14 +38,14 @@ sed "s/<TAG>/$TAG/" < Dockerrun.aws.json.template > $DOCKERRUN_FILE
 
 echo ""
 echo "Uploading deployement Dockerrun.aws.json to S3"
-EB_BUCKET=elasticbeanstalk-ap-southeast-2-482348613934
+EB_BUCKET=elasticbeanstalk-ap-southeast-2-717094888728
 aws s3 cp $DOCKERRUN_FILE s3://$EB_BUCKET/$DOCKERRUN_FILE \
   --region ap-southeast-2
 
 echo ""
 echo "Creating application version"
 aws elasticbeanstalk create-application-version \
-  --application-name "${ENVIRONMENT}-66pix" \
+  --application-name "${ENVIRONMENT}-svs" \
   --version-label $TAG \
   --source-bundle S3Bucket=$EB_BUCKET,S3Key=$DOCKERRUN_FILE \
   --region ap-southeast-2
@@ -54,7 +54,7 @@ echo ""
 echo "Updating environment"
 # Update Elastic Beanstalk environment to new version
 aws elasticbeanstalk update-environment \
-  --environment-name "${ENVIRONMENT}svs" \
+  --environment-name "${ENVIRONMENT}-svs" \
   --version-label $TAG \
   --region ap-southeast-2
 

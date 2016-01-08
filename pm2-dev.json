@@ -1,0 +1,11 @@
+{
+  "apps" : [{
+      "name"        : "svs",
+      "script"      : "server/index.js",
+      "watch": true,
+      "watch_options": {
+          "usePolling": true
+      }
+    }
+  ]
+}

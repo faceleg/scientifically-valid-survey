@@ -1,4 +1,5 @@
 # Files
+.DS_Store
 config.sh
 public/index.html
 

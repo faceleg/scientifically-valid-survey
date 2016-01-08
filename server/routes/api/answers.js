@@ -31,10 +31,11 @@ module.exports = function(app) {
       })
     })
     .then(function(answers) {
-        res.json(answers);
-      })
-      .catch(function(error) {
-        res.status(400).send(error.message);
-      });
+      res.json(answers);
+    })
+    .catch(function(error) {
+      res.status(500)
+      .send(error.message);
+    });
   });
 };

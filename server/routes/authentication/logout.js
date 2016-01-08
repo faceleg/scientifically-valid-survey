@@ -31,9 +31,10 @@ module.exports = function(app) {
   });
 };
 
-function handleError(error, res, next) {
+function handleError(error, res) {
   if (error.name === 'JsonWebTokenError') {
     return res.sendStatus(201);
   }
-  next(error);
+  res.status(500)
+  .send(error.message);
 }

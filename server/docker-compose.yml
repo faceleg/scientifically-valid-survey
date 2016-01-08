@@ -1,0 +1,25 @@
+test:
+    build: ../
+    environment:
+        PORT: 3000
+        TOKEN_SECRET: "this is a secret"
+        NODE_ENV: "development"
+        MYSQL_CONNECTION: "mysql://svs:secret@mysql/svs"
+    links:
+        - mysql
+    volumes:
+        - ../:/srv/www
+    working_dir: /srv/www
+    dns:
+        - 8.8.8.8
+        - 9.9.9.9
+
+mysql:
+    image: mysql
+    ports:
+        - "3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: "root password"
+        MYSQL_USER: "svs"
+        MYSQL_PASSWORD: "secret"
+        MYSQL_DATABASE: "svs"

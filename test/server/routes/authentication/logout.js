@@ -45,7 +45,7 @@ describe('routes authentication logout', function() {
     .expect(201, done);
   });
 
-  it('should send a non JsonWebTokenError down the middleware chain', function(done) {
+  it('should send a non 500 for non JsonWebTokenErrors', function(done) {
     sinon.stub(jwt, 'verify', function(token, secret, callback) {
       callback(new Error('This is another error'));
     });
@@ -53,10 +53,7 @@ describe('routes authentication logout', function() {
     request(app)
     .post('/authentication/logout')
     .set('authorization', '')
-    .expect(500, function(error) {
-      if (error) {
-        return done(error);
-      }
+    .expect(500, function() {
       jwt.verify.restore();
       done();
     });

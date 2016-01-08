@@ -1,0 +1,7 @@
+{
+  "apps" : [{
+      "name"        : "svs",
+      "script"      : "server/index.js"
+    }
+  ]
+}

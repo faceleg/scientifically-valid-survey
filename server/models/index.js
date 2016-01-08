@@ -10,6 +10,7 @@ var config    = require(__dirname + '/../database.js')[env];
 var db        = {};
 
 var sequelize = new Sequelize(config.url, {
+  logging: false,
   dialectOptions: {
     multipleStatements: true
   }

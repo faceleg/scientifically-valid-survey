@@ -27,7 +27,9 @@ app.use('/api', expressJwt({
 
 app.use(express.static('public'));
 
-app.use(require('connect-livereload')());
+if (config.get('NODE_ENV') === 'development') {
+  app.use(require('connect-livereload')());
+}
 
 require('./routes/authentication/login.js')(app);
 require('./routes/authentication/logout.js')(app);

@@ -19,7 +19,7 @@
     "coverage-average-karma": "./node_modules/.bin/coverage-average coverage/report-summary/text-summary.txt  --limit 95",
     "test-server": "docker-compose -f server/docker-compose.yml run test /srv/www/test-server.sh",
     "test-server-watch": "docker-compose -f server/docker-compose.yml run test /srv/www/test-server-watch.sh",
-    "coverage-average-server": "./node_modules/.bin/coverage-average coverage/server/text-summary.txt  --limit 95",
+    "coverage-average-server": "./node_modules/.bin/coverage-average coverage/server/text-summary.txt  --limit 50",
     "test": "npm run lint && npm run test-karma && npm run test-server",
     "code-climate": "CODECLIMATE_REPO_TOKEN=690cca4a3bf63b31ecb2864056c0be77601fb58fcea3cb13134d681963ef561e node_modules/.bin/codeclimate-test-reporter < coverage/report-lcov/lcov.info",
     "start": "pm2 start pm2.json; pm2 logs",

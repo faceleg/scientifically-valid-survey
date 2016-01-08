@@ -1,7 +1,7 @@
 'use strict';
 (function() {
   angular.module('svs.loginDialog')
-    .factory('loginDialogService', loginDialogService);
+  .factory('loginDialogService', loginDialogService);
 
   // @ngInject
   function loginDialogService($rootScope, ngDialog) {
@@ -41,6 +41,11 @@
         });
         $rootScope.$on('user-loginConfirmed', function() {
           ngDialog.close(dialog);
+        });
+        $rootScope.$on('$stateChangeStart', function(event, toState){
+          if (toState.name === 'home') {
+            ngDialog.close(dialog);
+          }
         });
         /* eslint-enable angular/on-watch */
       }

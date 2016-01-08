@@ -68,6 +68,21 @@ describe('login dialog', function() {
     expect(ngDialog.open).toHaveBeenCalled();
   }));
 
+  it('should hide the dialog if a $stateChangeStart event is broadcast for state home',
+      inject(function($rootScope, $location) {
+    spyOn($location, 'path');
+    spyOn(ngDialog, 'close');
+    loginDialogService.listen();
+
+    loginDialogService.login();
+
+    $rootScope.$broadcast('$stateChangeStart', {
+      name: 'home'
+    });
+
+    expect($location.path).not.toHaveBeenCalled();
+    expect(ngDialog.close).toHaveBeenCalled();
+  }));
   it('should close the dialog if the cancel method is called', inject(function() {
     spyOn(ngDialog, 'close');
 

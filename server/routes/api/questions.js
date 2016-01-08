@@ -11,8 +11,8 @@ module.exports = function(app) {
         ]
       };
       params.order = [req.query.orderBy];
-      params.offset = req.query.offset;
-      params.limit = req.query.limit;
+      params.offset = parseInt(req.query.offset, 10);
+      params.limit = parseInt(req.query.limit, 10);
       return models.question.findAll(params);
     })
     .then(function(questions) {

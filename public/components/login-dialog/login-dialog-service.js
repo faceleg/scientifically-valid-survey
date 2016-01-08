@@ -6,25 +6,25 @@
   // @ngInject
   function loginDialogService($rootScope, ngDialog) {
     var isOpen = false;
+    var dialog;
 
     var _loginDialogService = {
-      login: function login(options) {
+      login: function login() {
         if (isOpen) {
           return;
         }
 
         isOpen = true;
-        ngDialog.open(angular.extend({
+        dialog = ngDialog.open({
           template: 'login-dialog/login-dialog.html',
           controller: 'LoginDialogController',
           controllerAs: 'login',
           className: 'ngdialog-theme-plain',
           showClose: false,
           closeByEscape: false,
-          closeByDocument: false
-        }, options || {}, {
+          closeByDocument: false,
           ariaDescribedBySelector: '.login-dialog__logo'
-        }))
+        })
         .closePromise
         .then(function() {
           isOpen = false;

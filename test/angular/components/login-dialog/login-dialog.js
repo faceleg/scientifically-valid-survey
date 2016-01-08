@@ -6,9 +6,11 @@ describe('login dialog', function() {
 
   var loginDialogService;
   var ngDialog;
-  beforeEach(inject(function(_loginDialogService_, _ngDialog_) {
+  var $q;
+  beforeEach(inject(function(_loginDialogService_, _ngDialog_, _$q_) {
     loginDialogService = _loginDialogService_;
     ngDialog = _ngDialog_;
+    $q = _$q_;
   }));
 
   describe('login', function() {
@@ -19,7 +21,7 @@ describe('login dialog', function() {
     });
 
     it('should call the ngDialog open function', function() {
-      spyOn(ngDialog, 'open');
+      spyOn(ngDialog, 'open').and.callThrough();
       loginDialogService.login();
       expect(ngDialog.open).toHaveBeenCalled();
     });
@@ -27,7 +29,8 @@ describe('login dialog', function() {
     it('should call the ngDialog open function only if the dialog is not already open', function() {
       spyOn(ngDialog, 'open').and.callFake(function() {
         return {
-          id: 1
+          id: 1,
+          closePromise: $q.resolve()
         };
       });
       spyOn(ngDialog, 'isOpen').and.callFake(function() {
@@ -39,23 +42,6 @@ describe('login dialog', function() {
       expect(ngDialog.open.calls.count()).toBe(1);
     });
 
-    it('calls the ngDialog open function with the provided options', function() {
-      spyOn(ngDialog, 'open');
-
-      var options = {
-        a: 'b',
-        c: 'd',
-        e: 'f'
-      };
-
-      loginDialogService.login(options);
-      expect(ngDialog.open.calls.count()).toBe(1);
-
-      var calledOptions = ngDialog.open.calls.mostRecent().args[0];
-      expect(options.a).toEqual(calledOptions.a);
-      expect(options.c).toEqual(calledOptions.c);
-      expect(options.e).toEqual(calledOptions.e);
-    });
   });
 
   it('should hide the dialog if a user-loginConfirmed event is broadcast',
@@ -74,7 +60,7 @@ describe('login dialog', function() {
 
   it('should show the dialog if a user-notAuthenticated event is broadcast',
       inject(function($rootScope) {
-    spyOn(ngDialog, 'open');
+    spyOn(ngDialog, 'open').and.callThrough();
     loginDialogService.listen();
 
     $rootScope.$broadcast('user-notAuthenticated', {});

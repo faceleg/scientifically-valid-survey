@@ -4,6 +4,7 @@ var config = require('./config.js');
 var express = require('express');
 var expressJwt = require('express-jwt');
 var session = require('express-session');
+var SequelizeStore = require('connect-sequelize')(session);
 var debug = require('debug')('svs:app');
 
 var app = express();
@@ -12,7 +13,8 @@ app.use(require('body-parser').json());
 app.use(session({
   secret: 'correct horse battery staple',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new SequelizeStore(require('./sequelize.js'), {}, 'session')
 }))
 
 app.use(require('./set-respondent.js'))

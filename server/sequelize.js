@@ -12,6 +12,7 @@ module.exports = new Sequelize(sequelizeConfig.database, sequelizeConfig.usernam
   dialect: sequelizeConfig.dialect,
   logging: debugSql,
   dialectOptions: {
-    multipleStatements: true
+    multipleStatements: true,
+    charset: 'utf8'
   }
 });
